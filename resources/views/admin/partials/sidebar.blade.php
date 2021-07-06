@@ -46,7 +46,7 @@
                             </li>--}}
                             <li>
                                         <a class="{{$request=='media' && $innerrequest=='media' ? 'active' : ''}}" href="{{route('cattype_index')}}"><i class="fa fa-dashboard fa-fw"></i> Categories </a>
-                                    </li>
+                            </li>
                             <li>
                                 <a href="#"  class="{{$request=='setting' ? 'active' : ''}}"><i class="fa fa-wrench fa-fw"></i> Settings<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">

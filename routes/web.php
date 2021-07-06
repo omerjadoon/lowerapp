@@ -53,9 +53,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 		Route::get('city-del/{id}','SettingController@city_del')->name('city_del');
 		//city end
 		//mediatype
-		Route::get('cat-type','SettingController@cat')->name('cattype_index');
+		Route::get('category','SettingController@cat')->name('cattype_index');
 		Route::post('cat-type-store','SettingController@cattype_store')->name('cat_store');
-		Route::get('cat-type-edit/{id}','SettingController@cattype_edit')->name('cat_edit');
+		Route::get('category-edit/{id}','SettingController@cattype_edit')->name('cat_edit');
 		Route::post('cat-type-update/{id}','SettingController@cattype_update')->name('cat_update');
 		Route::get('cat-type-del/{id}','SettingController@cattype_del')->name('cat_del');
 		//mediatype end
