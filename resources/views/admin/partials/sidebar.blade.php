@@ -13,9 +13,9 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="{{route('admin_home')}}" class="{{$request=='dashboard' &&  $innerrequest=='dashboard' ? 'active' : ''}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="{{route('admin_home')}}" class="{{$request=='dashboard' &&  $innerrequest=='dashboard' ? 'active' : ''}}"><i class="fa fa-home fa-fw"></i> Dashboard</a>
                             </li>
-                            <li>
+                           {{-- <li>
                                  <a href="#"  class="{{$request=='user' ? 'active' : ''}}"><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
@@ -43,8 +43,10 @@
                                     </li>
                                      
                                 </ul>
-                            </li>
-                           
+                            </li>--}}
+                            <li>
+                                        <a class="{{$request=='media' && $innerrequest=='media' ? 'active' : ''}}" href="{{route('cattype_index')}}"><i class="fa fa-dashboard fa-fw"></i> Categories </a>
+                                    </li>
                             <li>
                                 <a href="#"  class="{{$request=='setting' ? 'active' : ''}}"><i class="fa fa-wrench fa-fw"></i> Settings<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -57,16 +59,14 @@
                                     <li>
                                         <a class="{{$innerrequest=='city' ? 'active' : ''}}" href="{{route('city_index')}}">City</a>
                                     </li>
-                                    {{--<li>
-                                        <a class="{{$innerrequest=='media' ? 'active' : ''}}" href="{{route('mediatype_index')}}">Media Type </a>
-                                    </li>--}}
+                                   
                                     
                                 </ul>
 
-                            </li>
+                            {{--</li>
                                                          <li>
                                 <a href="{{route('contact_list')}}" class="{{$request=='contact-list' ? 'active' : ''}}"><i class="fa fa-phone fa-fw"></i> Contact Us</a>
-                            </li>
+                            </li>--}}
                         </ul>
                     </div>
                 </div>
