@@ -57,12 +57,11 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
+            'key' => 'AKIAQECFYDNIX6ENZUVH',
+            'secret' => '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',
+            'region' => 'us-east-2',
+            'bucket' => 'llgstorage',
+            'url' => 'https://llgstorage.s3.us-east-2.amazonaws.com',
         ],
 
     ],

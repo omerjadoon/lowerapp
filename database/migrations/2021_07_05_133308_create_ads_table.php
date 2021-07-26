@@ -26,6 +26,9 @@ class CreateAdsTable extends Migration
             $table->float('price_range');
             $table->float('lower_selling_price');
             $table->float('total_decrement_amount')->nullable();
+            $table->text('cover_file_name');
+            $table->text('cover_file_path');
+            $table->string('cover_file_extension');
             $table->timestamps();
         });
     }

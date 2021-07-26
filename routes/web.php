@@ -13,13 +13,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MainController@index')->name('main');
+Route::post('save-contact','MainController@savecontact')->name('save_contact');
 
-Auth::routes();
+Route::view('privacy-policy','privacy_policy')->name('privacy_policy');
+/*
+|--------------------------------------------------------------------------
+| AJAX REQUEST FOR COUNTRY CITY STATE
+|--------------------------------------------------------------------------
+*/
+Route::get('get-state-by-countryid','MainController@getstatebycountryid')->name('get_state');
+Route::get('get-city-by-stateid','MainController@getcitybystateid')->name('get_city');
+
+
+
+Auth::routes(['verify' => true]);
+
+Route::get('change-password','HomeController@change_password')->name('change_password');
+Route::post('change-password','HomeController@change_passwordstore')->name('change_password');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/*|----------------------------------------------------------------------------------------------|
+  |--------------------------------BUSINESS USER ROUTING-----------------------------------------|
+  |----------------------------------------------------------------------------------------------|*/
+  Route::group(['prefix' => 'seller','middleware'=> ['auth','verified']],function(){
+	Route::namespace('Seller')->group(function () {
+	  Route::resource('dashboard','SellerController');
+			  Route::get('account-setting','SellerController@account_setting')->name('account');
+		Route::resource('ads','AdController');
+		Route::resource('leads','LeadController');
+		Route::get('send-payment-bfa','LeadController@sendpaymenttobfa')->name('sendpaymenttobfa');
+		Route::get('upload-ads','AdController@uploadadindex')->name('upload_ad');
+		Route::get('ad-participants','AdController@ad_participants')->name('participants');
+		Route::get('get-format','AdController@get_format')->name('get-format');
+	});
+  });
 
 /*|----------------------------------------------------------------------------------------------|
   |------------------------------------ADMIN ROUTING---------------------------------------------|
@@ -29,6 +58,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
 		Route::get('home','AdminController@home')->name('admin_home');
 		Route::get('logout','AdminController@logout')->name('admin_logout');
+		Route::get('delete-user/{userid}','AdminController@del_user')->name('del_user');
+
+		//Seller Controller 
+		Route::resource('seller','SellerController');
+		//ad controller
+		Route::resource('ads','AdController');
 		//contact us
 		Route::get('contact-list','SettingController@contact_list')->name('contact_list');
 		//country

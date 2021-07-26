@@ -13,21 +13,40 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="{{route('admin_home')}}" class="{{$request=='dashboard' &&  $innerrequest=='dashboard' ? 'active' : ''}}"><i class="fa fa-home fa-fw"></i> Dashboard</a>
+                                <a href="{{route('admin_home')}}" class="{{$innerrequest=='dashboard' ? 'active' : ''}}"><i class="fa fa-home fa-fw"></i> Dashboard</a>
                             </li>
-                           {{-- <li>
-                                 <a href="#"  class="{{$request=='user' ? 'active' : ''}}"><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
+                            <li>
+                                <a href="#"  class="{{$request=='user' ? 'active' : ''}}"><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a class="{{$innerrequest=='media' ? 'active' : ''}}" href="{{route('media-partner.index')}}">Media Partner</a>
+                                        <a class="{{$innerrequest=='seller' ? 'active' : ''}}" href="{{route('seller.index')}}">Seller</a>
                                     </li>
                                     <li>
-                                        <a class="{{$innerrequest=='business' ? 'active' : ''}}" href="{{route('business-partner.index')}}">Business Partner</a>
+                                        <a class="{{$innerrequest=='buyer' ? 'active' : ''}}" href="#">Buyer</a>
+                                    </li>
+                                   
+                                   
+                                    
+                                </ul>
+
+                            </li>
+                            <li>
+                                <a href="{{route('ads.index')}}" class="{{$innerrequest=='allads' ? 'active' : ''}}"><i class="fa fa-desktop fa-fw"></i>  Ads</a>
+                            </li>
+                           {{-- <li>
+                             
+                                 <a class="{{$request=='user' ? 'active' : ''}}" href="#" ><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="" >Seller</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Buyer</a>
                                     </li>
                                      
                                 </ul>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                  <a href=""  class="{{$request=='ads' ? 'active' : ''}}"><i class="fa fa-desktop fa-fw"></i>  Ads
                                     <span class="fa arrow"></span>
                                  </a>
@@ -63,8 +82,8 @@
                                     
                                 </ul>
 
-                            {{--</li>
-                                                         <li>
+                            </li>
+                            {{--                             <li>
                                 <a href="{{route('contact_list')}}" class="{{$request=='contact-list' ? 'active' : ''}}"><i class="fa fa-phone fa-fw"></i> Contact Us</a>
                             </li>--}}
                         </ul>

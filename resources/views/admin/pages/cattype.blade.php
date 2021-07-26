@@ -36,7 +36,7 @@
                                                 <div class="form-group">
                                                     <!-- <label>Country Name</label> -->
                                                      
-                                                    <input class="form-control" name="type" placeholder="Enter Media Type" value="{{$page == 'edit' ? $cattype->name : ''}}{{old('type')}}">
+                                                    <input class="form-control" name="type" placeholder="Enter Category" value="{{$page == 'edit' ? $cattype->name : ''}}{{old('type')}}">
                                                      @include('alerts.errorfield',['field'=>'type'])
                                                 </div>
                                              
@@ -124,6 +124,5 @@
                         responsive: true
                 });
         </script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="{{asset('admin/js/taginput/tagsinput.js')}}"></script>
+
 @endpush

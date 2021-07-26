@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>BigProfitAds - {{$title}}</title>
+        <title>LowLowerGone - {{$title}}</title>
             <link rel="icon" href="{{asset('admin/login/logo.png')}}" type="image/x-icon">
         <!-- Bootstrap Core CSS -->
         <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -97,6 +97,7 @@
 
         <!-- Custom Theme JavaScript -->
         <script src="{{asset('admin/js/startmin.js')}}"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
         
         @stack('js')

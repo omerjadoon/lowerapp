@@ -123,4 +123,10 @@ class AdminController extends Controller
     {
         //
     }
+    public function del_user($id)
+    {
+        $user=User::findOrFail($id);
+        $user->delete();
+        return back()->with('del','User Deleted Successfully');
+    }
 }
