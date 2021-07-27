@@ -15,10 +15,25 @@ class AdController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     { 
         $data['category']=Category::all();
-            $data['adsection']=Ad::orderBy('created_at','desc')->paginate(12);
+            $data['adsection']=new Ad();
+            if(!empty($request->title)){
+                $data['adsection']=$data['adsection']->where('title','like', '%' . $request->title.'%');
+            }
+            if(!empty($request->category)){
+                $data['adsection']=$data['adsection']->where('cat_id',$request->category);
+            }
+            if(!empty($request->p_range_from) || !empty($request->p_range_to)){
+                $data['adsection']=$data['adsection']->whereBetween('price_range',[$request->p_range_from,$request->p_range_to]);
+            }
+            if(!empty($request->seller_id)){
+                $seller=SellerDetail::findorFail($request->seller_id);
+                $data['seller_name']=$seller->title.' '.$seller->f_name.' '.$seller->l_name;
+                $data['adsection']=$data['adsection']->where('seller_id',$request->seller_id);
+            }
+            $data['adsection']=$data['adsection']->orderBy('created_at','desc')->paginate(12);
         return view('admin.pages.adindex',$data);
     }
 
@@ -51,7 +66,9 @@ class AdController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['adsection']=Ad::with('adhasmanyimage')->where('id',$id)->first();
+        // dd($data);
+        return view('admin.pages.addetail',$data);
     }
 
     /**

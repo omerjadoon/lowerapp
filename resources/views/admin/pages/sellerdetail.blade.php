@@ -33,7 +33,7 @@
                             <div class="col-md-6">
                                         <h3>{{$seller->sellerDetail->title.' '.$seller->sellerDetail->f_name.' '.$seller->sellerDetail->l_name}}</h3>
                                     </br>
-                                    <b>Total Ad Posted : </b>{{$seller->sellerDetail->sellerpostedmanyads->count()}}
+                                    <b>Total Ad Posted : </b><a href="{{route('ad.index',['seller_id'=>$seller->sellerDetail->id])}}">{{$seller->sellerDetail->sellerpostedmanyads->count()}}</a>
                                     
                             </div>
                             <div class="col-md-6 text-right">

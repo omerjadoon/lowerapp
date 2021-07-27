@@ -30,6 +30,9 @@ class AdminController extends Controller
             return view('admin.pages.dashboard');
 
     }
+    public function change_pass_admin(){
+        return view('admin.pages.change_pass');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -108,9 +111,24 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'oldpass' => 'required|string',
+            'password' => 'required|min:8|required_with:confirm_password|same:confirm_password',
+            'confirm_password' => 'required|string|min:8',
+        ]);
+        $admin=Admin::findorFail(Session::has('admin_id'));
+        // dd($admin);
+        extract($request->all());
+        if(Hash::check($oldpass, $admin->password)){
+           $admin->password=Hash::make($password);
+           $admin->update(); 
+           return back()->with('ok','Password Change Successfully');
+        }else{
+            return back()->with('pass_error','Old Password is incorrect');
+        }
+        // dd("sd");
     }
 
     /**

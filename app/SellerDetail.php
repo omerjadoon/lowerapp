@@ -13,5 +13,9 @@ class SellerDetail extends Model
      {
          return $this->hasMany('App\Ad','seller_id','id');
      }
+     public function belongtouser(){
+        return $this->belongsTo('App\User','user_id','id');
+     }
+
 }
 

@@ -12,4 +12,7 @@ class Ad extends Model
     public function belongtoseller(){
         return $this->belongsTo('App\SellerDetail','seller_id','id');
      }
+     public function belongtocategory(){
+        return $this->belongsTo('App\Category','cat_id','id');
+     }
 }

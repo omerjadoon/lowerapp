@@ -31,7 +31,7 @@
 
                             </li>
                             <li>
-                                <a href="{{route('ads.index')}}" class="{{$innerrequest=='allads' ? 'active' : ''}}"><i class="fa fa-desktop fa-fw"></i>  Ads</a>
+                                <a href="{{route('ad.index')}}" class="{{$innerrequest=='allads' ? 'active' : ''}}"><i class="fa fa-desktop fa-fw"></i>  Ads</a>
                             </li>
                            {{-- <li>
                              

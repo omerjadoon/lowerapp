@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>LowLowerGone - {{$title}}</title>
+        <title>LowLowerGone - Admin | {{$title}}</title>
             <link rel="icon" href="{{asset('admin/login/logo.png')}}" type="image/x-icon">
         <!-- Bootstrap Core CSS -->
         <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet">
