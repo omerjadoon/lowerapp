@@ -27,14 +27,14 @@ class HomeController extends Controller
     {
         if(Auth::user()->role=='seller')
         return redirect()->route('dashboard.index');
+        else
+        return redirect()->route('main');
     }
-    public function change_password(Request $request){
-        return view('auth.passwords.changepass');
-    }
+   
      public function change_passwordstore(Request $request){
 
            $this->validate($request,[
-               'password'=>['required','string'],
+               'oldpassword'=>['required','string'],
                'password'=>['required','string'],
                'password_confirmation' =>['required','string'],
             

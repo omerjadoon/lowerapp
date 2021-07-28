@@ -17,6 +17,10 @@ Route::get('/', 'MainController@index')->name('main');
 Route::post('save-contact','MainController@savecontact')->name('save_contact');
 
 Route::view('privacy-policy','privacy_policy')->name('privacy_policy');
+Route::view('about-us','aboutus')->name('aboutus');
+Route::view('contact-us','contactus')->name('contactus');
+
+
 /*
 |--------------------------------------------------------------------------
 | AJAX REQUEST FOR COUNTRY CITY STATE
@@ -29,18 +33,19 @@ Route::get('get-city-by-stateid','MainController@getcitybystateid')->name('get_c
 
 Auth::routes(['verify' => true]);
 
-Route::get('change-password','HomeController@change_password')->name('change_password');
-Route::post('change-password','HomeController@change_passwordstore')->name('change_password');
+
+Route::post('change-password','HomeController@change_passwordstore')->name('change_password_upd');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*|----------------------------------------------------------------------------------------------|
   |--------------------------------BUSINESS USER ROUTING-----------------------------------------|
   |----------------------------------------------------------------------------------------------|*/
-  Route::group(['prefix' => 'seller','middleware'=> ['auth','verified']],function(){
+  Route::group(['prefix' => 'seller','middleware'=> ['auth','verified','seller']],function(){
 	Route::namespace('Seller')->group(function () {
 	  Route::resource('dashboard','SellerController');
 			  Route::get('account-setting','SellerController@account_setting')->name('account');
+			  Route::get('change-password','SellerController@change_password')->name('change_password');
 		Route::resource('ads','AdController');
 		Route::resource('leads','LeadController');
 		Route::get('send-payment-bfa','LeadController@sendpaymenttobfa')->name('sendpaymenttobfa');

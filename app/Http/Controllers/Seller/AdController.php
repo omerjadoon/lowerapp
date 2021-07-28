@@ -36,11 +36,11 @@ class AdController extends Controller
 
         $data['category']=Category::all();
        
-        return view('user.seller.adindex',$data);
+        return view('user.seller.pages.adindex',$data);
     }
     public function uploadadindex(){
         $data['category']=Category::all();
-        return view('user.seller.uploadad',$data);
+        return view('user.seller.pages.uploadad',$data);
     }
     /**
      * Show the form for creating a new resource.
@@ -124,7 +124,7 @@ class AdController extends Controller
     {
         $data['category']=Category::all();
         $data['ad']=Ad::findOrFail($id);
-        return view('user.seller.addetail',$data);   
+        return view('user.seller.pages.addetail',$data);   
     }
 
     /**

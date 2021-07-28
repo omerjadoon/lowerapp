@@ -19,12 +19,15 @@ class SellerController extends Controller
      */
     public function index()
     {
-        return view('user.seller.dashboard');
+        return view('user.seller.pages.dashboard');
     }
     public function account_setting(Request $request){
        
         $data['country']=Country::orderBy('created_at', 'desc')->get();
-            return view('user.seller.account',$data);
+            return view('user.seller.pages.account',$data);
+    }
+    public function change_password(Request $request){
+        return view('user.seller.pages.changepass');
     }
 
     /**

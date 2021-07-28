@@ -181,7 +181,7 @@
                 </tr> -->
                 <tr>
                   <td>
-                    <p style="font-size:13px; margin:0;">2018 - {{date('Y')}} &copy Copy Right by BIG PROFIT ADS</p>
+                    <p style="font-size:13px; margin:0;">2018 - {{date('Y')}} © Copy Right by Low Lower Gone</p>
                   </td>
                 </tr>
                <!--  <tr>

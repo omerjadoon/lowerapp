@@ -39,6 +39,15 @@ class LoginController extends Controller
      *
      * @return void
      */
+        public function showLoginForm(){
+            if(\Request::get('seller')){
+                return view('user.seller.pages.login');
+            }else if(\Request::get('buyer')){
+                return view('user.buyer.pages.login');
+            }else{
+                return redirect()->back();
+            }
+        }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
