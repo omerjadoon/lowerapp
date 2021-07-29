@@ -16,6 +16,7 @@ class CreateAdsTable extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->bigIncrements('id');
+            $table->text('ad_slug');
             $table->bigInteger('seller_id')->unsigned();
             $table->foreign('seller_id')->references('id')->on('seller_details')->onUpdate('cascade')->onDelete('cascade');
             $table->bigInteger('cat_id')->unsigned();
@@ -29,6 +30,8 @@ class CreateAdsTable extends Migration
             $table->text('cover_file_name');
             $table->text('cover_file_path');
             $table->string('cover_file_extension');
+            $table->tinyInteger('is_featured')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

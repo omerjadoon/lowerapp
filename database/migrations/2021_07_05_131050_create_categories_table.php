@@ -16,7 +16,11 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->bigIncrements('id');
+            $table->text('cat_slug');
             $table->string('name');
+            $table->text('file_path');
+            $table->text('file_name');
+            $table->string('file_extension');
             $table->timestamps();
         });
     }

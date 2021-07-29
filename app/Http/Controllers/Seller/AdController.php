@@ -66,14 +66,20 @@ class AdController extends Controller
             'adsfile'=>['required','array','min:6'],
             'category'=>['required'],
             'title' => ['required', 'string', 'max:255'],
-            'desc' => ['required', 'string', 'max:500'],
+            'desc' => ['required', 'string','min:100', 'max:500'],
             'price_range' => ['required','integer'],
             'lower_selling_price'=>['required', 'integer'],
         ]);
         DB::beginTransaction();
+        $slug=urlencode(strtolower($request->title));
+        $adslug=Ad::where('ad_slug',$slug)->count();
+        if($adslug>0){
+            $slug=urlencode(strtolower($request->title)).'-'.$adslug;
+        }
         try{
             $ads=new Ad();
             $ads->title=$request->title;
+            $ads->ad_slug=$slug;
             $ads->cat_id=$request->category;
             $ads->desc=$request->desc;
             $ads->price_range=$request->price_range;
@@ -82,7 +88,7 @@ class AdController extends Controller
             if($request->has('coverfile')){
                 $image=$request->file('coverfile');
                 $extension = $image->getClientOriginalExtension();
-                $filename = 'Ads-'.Auth::user()->id.'9090'.uniqid().'.'.$extension;
+                $filename = 'AdsCOVER-'.Auth::user()->id.'9090'.uniqid().'.'.$extension;
                 $path = Storage::disk('s3')->put('AdsFile/'.$filename,file_get_contents($image), 'public');
                 $filepath=Storage::disk('s3')->url('AdsFile/'.$filename);
                 $ads->cover_file_name=$filename;

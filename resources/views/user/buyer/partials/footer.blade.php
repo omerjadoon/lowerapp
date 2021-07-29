@@ -75,7 +75,7 @@
             <p>Copyright © <script>
                 var CurrentYear = new Date().getFullYear()
                 document.write(CurrentYear)
-              </script>. All Rights Reserved, theme by <a class="text-primary" href="https://themefisher.com" target="_blank">themefisher.com</a></p>
+              </script>. All Rights Reserved by LOW LOWER GONE</p>
           </div>
         </div>
         <div class="col-sm-6 col-12">

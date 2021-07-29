@@ -19,7 +19,9 @@ Route::post('save-contact','MainController@savecontact')->name('save_contact');
 Route::view('privacy-policy','privacy_policy')->name('privacy_policy');
 Route::view('about-us','aboutus')->name('aboutus');
 Route::view('contact-us','contactus')->name('contactus');
-
+Route::get('categories','MainController@allcate')->name('allcate');
+Route::get('ads','MainController@allads')->name('allads');
+Route::get('ads/{slug}','MainController@adsdesc')->name('adsdesc');
 
 /*
 |--------------------------------------------------------------------------

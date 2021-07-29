@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\{Country,City,State,Category};
+use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
@@ -165,6 +166,7 @@ class SettingController extends Controller
         }
     }
     public function cat(){
+      
         $data['cattype']=Category::orderBy('created_at', 'desc')->get();
          $data['page']='index';
         return view('admin.pages.cattype',$data);
@@ -173,10 +175,22 @@ class SettingController extends Controller
     {
         $this->validate($request, [
                  'type' => ['required', 'string'],
+                 'catfile'=>'required',
             ]);
         try{
             $data=new Category();
             $data->name=$request->type;
+            $data->cat_slug=urlencode(strtolower($request->type));
+            if($request->has('catfile')){
+                $image=$request->file('catfile');
+                $extension = $image->getClientOriginalExtension();
+                $filename = 'cats-10101'.uniqid().'.'.$extension;
+                $path = Storage::disk('s3')->put('caticon/'.$filename,file_get_contents($image), 'public');
+                $filepath=Storage::disk('s3')->url('caticon/'.$filename);
+                $data->file_name=$filename;
+                $data->file_path=$filepath;
+                $data->file_extension=$extension;
+            }  
             $data->save();
             return redirect()->back()->with('success','cattype Added SuccessFully');
         }
@@ -195,6 +209,18 @@ class SettingController extends Controller
 
             $data=Category::findOrFail($value);
             $data->name=$request->type;
+            $data->cat_slug=urlencode(strtolower($request->type));
+            if($request->has('catfile')){
+                Storage::disk('s3')->delete('caticon/'.$data->file_name);
+                $image=$request->file('catfile');
+                $extension = $image->getClientOriginalExtension();
+                $filename = 'cats-10101'.uniqid().'.'.$extension;
+                $path = Storage::disk('s3')->put('caticon/'.$filename,file_get_contents($image), 'public');
+                $filepath=Storage::disk('s3')->url('caticon/'.$filename);
+                $data->file_name=$filename;
+                $data->file_path=$filepath;
+                $data->file_extension=$extension;
+            }  
             $data->update();
             return redirect()->route('cattype_index')->with('success','cattype Updated SuccessFully');
         }

@@ -98,7 +98,9 @@
         <!-- Custom Theme JavaScript -->
         <script src="{{asset('admin/js/startmin.js')}}"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
+    <script>
+           
+    </script>
         
         @stack('js')
 </body>

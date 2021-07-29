@@ -74,6 +74,12 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
 <script src="{{asset('buyer/plugins/google-map/gmap.js')}}"></script>
 <script src="{{asset('buyer/js/script.js')}}"></script>
+<script>
+  function logout() {
+             
+                $('#logoutfrm').submit();
+      } 
+</script>
 @stack('js')
 </body>
 

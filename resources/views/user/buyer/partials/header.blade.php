@@ -1,9 +1,9 @@
 <section>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg navbar-light navigation">
-					<a class="navbar-brand" href="index.html">
+					<a class="navbar-brand" href="{{route('main')}}">
 						<img src="{{asset('buyer/images/loginlogo.png')}}" alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -14,6 +14,12 @@
 						<ul class="navbar-nav ml-auto main-nav ">
 							<li class="nav-item {{$request=='index' ? 'active' : ''}}">
 								<a class="nav-link" href="{{route('main')}}">Home</a>
+							</li>
+							<li class="nav-item {{$request=='cat' ? 'active' : ''}}">
+								<a class="nav-link" href="{{route('allcate')}}">Categories</a>
+							</li>
+							<li class="nav-item {{$request=='ads' ? 'active' : ''}}">
+								<a class="nav-link" href="{{route('allads')}}">All Ads</a>
 							</li>
                             <li class="nav-item {{$request=='privacy' ? 'active' : ''}}">
                                 <a class="nav-link" href="{{route('privacy_policy')}}">Privacy Policy</a>
@@ -80,9 +86,30 @@
 							@endguest
 							@auth
 							@if(Auth::user()->role=='seller')
-							<li><a class="nav-link text-white add-button" href="{{route('dashboard.index')}}">
-							 My Seller Portal
-							</a></li>	
+							<li class="nav-item text-white add-button dropdown dropdown-slide">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Welcome, {{Auth::user()->sellerDetail->title.' '.Auth::user()->sellerDetail->f_name}}<span></span>
+								</a>
+
+								<!-- Dropdown list -->
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="{{route('dashboard.index')}}"><i class="fa fa-home"></i> My Dashboard</a>
+									<form action="{{route('logout')}}" id="logoutfrm" method="post">@csrf<span class="dropdown-item" style="cursor: pointer" onclick="logout()"><i class="fa fa-sign-out"></i> Logout</span></form>
+								</div>
+							</li>	
+							@elseif(Auth::user()->role=='buyer')
+							<li class="nav-item text-white add-button dropdown dropdown-slide">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Welcome, {{Auth::user()->buyerDetail->title.' '.Auth::user()->buyerDetail->f_name}}<span></span>
+								</a>
+
+								<!-- Dropdown list -->
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="dashboard.html">Dashboard</a>
+									<a class="dropdown-item" href="dashboard-my-ads.html">Dashboard My Ads</a>
+									<a class="dropdown-item" href="dashboard-favourite-ads.html">Dashboard Favourite Ads</a>
+									<a class="dropdown-item" href="dashboard-archived-ads.html">Dashboard Archived Ads</a>
+									<a class="dropdown-item" href="dashboard-pending-ads.html">Dashboard Pending Ads</a>
+								</div>
+							</li>	
 								@endif
 							@endauth
 						</ul>
