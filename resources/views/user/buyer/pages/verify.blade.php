@@ -1,6 +1,27 @@
-@extends('layouts.app',['title'=>'Email Verify'])
-
+@extends('user.buyer.layouts.app',['title'=>'Email Verify','request'=>'verify'])
+@push('css')
+<style>
+ 
+</style>
+    
+@endpush
 @section('content')
+<section class="page-title">
+    <!-- Container Start -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 text-center">
+                <!-- Title text -->
+                <h3>Account Verification</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Container End -->
+</section>
+<!--===================================
+=            Store Section            =
+====================================-->
+<section class="section bg-gray" style="padding:152px 0px !important">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -25,4 +46,8 @@
         </div>
     </div>
 </div>
+</section>
 @endsection
+@push('js')
+    
+@endpush

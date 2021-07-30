@@ -18,7 +18,7 @@
               <div class="login-main"> 
                 <form class="theme-form" id="reg_form" action="{{route('register')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                  <h4>Create your account as Seller</h4>
+                  <h4>Create your account as {{\Request::get('seller') ? 'Seller' : 'Buyer'}}</h4>
                   <p>Enter your personal details to create account</p>
                   @include('alerts.error-alert',['ses_name'=>'error'])
                   <div class="form-group">
@@ -96,7 +96,7 @@
 
                   
           
-                  <input type="hidden" value="buyer" name="role" >
+                  <input type="hidden" value="{{\Request::get('seller') ? 'seller' : 'buyer'}}" name="role" >
                   <div class="form-group">
                     <label class="col-form-label">Password</label>
                     <input class="form-control" type="password" id="pass" name="login[password]" required="" placeholder="*********">
@@ -121,7 +121,7 @@
                   <div class="social mt-4">
                     <div class="btn-showcase"><a class="btn btn-light" href="https://www.linkedin.com/login" target="_blank"><i class="txt-linkedin" data-feather="linkedin"></i> LinkedIn </a><a class="btn btn-light" href="https://twitter.com/login?lang=en" target="_blank"><i class="txt-twitter" data-feather="twitter"></i>twitter</a><a class="btn btn-light" href="https://www.facebook.com/" target="_blank"><i class="txt-fb" data-feather="facebook"></i>facebook</a></div>
                   </div> -->
-                  <p class="mt-4 mb-0">Already have an account?<a class="ml-2" href="{{route('login',['seller'=>'yes'])}}">Sign in</a></p>
+                  <p class="mt-4 mb-0">Already have an account?<a class="ml-2" href="{{\Request::get('seller') ? route('login',['seller'=>'yes']) : route('login',['buyer'=>'yes'])}}">Sign in</a></p>
                 </form>
               </div>
             </div>

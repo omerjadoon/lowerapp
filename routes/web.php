@@ -41,19 +41,30 @@ Route::post('change-password','HomeController@change_passwordstore')->name('chan
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*|----------------------------------------------------------------------------------------------|
-  |--------------------------------BUSINESS USER ROUTING-----------------------------------------|
+  |--------------------------------Seller USER ROUTING-----------------------------------------|
   |----------------------------------------------------------------------------------------------|*/
   Route::group(['prefix' => 'seller','middleware'=> ['auth','verified','seller']],function(){
 	Route::namespace('Seller')->group(function () {
-	  Route::resource('dashboard','SellerController');
-			  Route::get('account-setting','SellerController@account_setting')->name('account');
-			  Route::get('change-password','SellerController@change_password')->name('change_password');
+	  	Route::resource('dashboard','SellerController');
+		Route::get('account-setting','SellerController@account_setting')->name('account');
+		Route::get('change-password','SellerController@change_password')->name('change_password');
 		Route::resource('ads','AdController');
 		Route::resource('leads','LeadController');
 		Route::get('send-payment-bfa','LeadController@sendpaymenttobfa')->name('sendpaymenttobfa');
 		Route::get('upload-ads','AdController@uploadadindex')->name('upload_ad');
 		Route::get('ad-participants','AdController@ad_participants')->name('participants');
 		Route::get('get-format','AdController@get_format')->name('get-format');
+	});
+  });
+
+  /*|----------------------------------------------------------------------------------------------|
+  |--------------------------------Buyer USER ROUTING-----------------------------------------|
+  |----------------------------------------------------------------------------------------------|*/
+  Route::group(['prefix' => 'buyer','middleware'=> ['auth','verified','buyer']],function(){
+	Route::namespace('Buyer')->group(function () {
+	  	Route::resource('my-dashboard','BuyerController');
+		Route::get('account-setting','BuyerController@account_setting')->name('b_account');
+		Route::get('change-password','BuyerController@change_password')->name('b_change_password');
 	});
   });
 

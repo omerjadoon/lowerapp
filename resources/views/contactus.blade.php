@@ -30,7 +30,7 @@
                 <div class="contact-us-content p-4">
                     <h5>Contact Us</h5>
                     <h1 class="pt-3">Hello, what's on your mind?</h1>
-                    <p class="pt-3 pb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elit dolor, blandit vel euismod ac, lentesque et dolor. Ut id tempus ipsum.</p>
+                    <p class="pt-3 pb-5">Get in touch with us today.</p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -67,5 +67,9 @@
 </section>
 <!-- contact us end -->
 @endsection
+@push('nice-select-js')
+<script src="{{asset('buyer/plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+@endpush
 @push('js')
+
 @endpush

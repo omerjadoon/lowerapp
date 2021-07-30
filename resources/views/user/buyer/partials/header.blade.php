@@ -1,5 +1,5 @@
 <section>
-	<div class="container-fluid">
+	<div class="@auth container @endauth @guest container @endguest ">
 		<div class="row">
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg navbar-light navigation">
@@ -15,12 +15,12 @@
 							<li class="nav-item {{$request=='index' ? 'active' : ''}}">
 								<a class="nav-link" href="{{route('main')}}">Home</a>
 							</li>
-							<li class="nav-item {{$request=='cat' ? 'active' : ''}}">
+							{{-- <li class="nav-item {{$request=='cat' ? 'active' : ''}}">
 								<a class="nav-link" href="{{route('allcate')}}">Categories</a>
 							</li>
 							<li class="nav-item {{$request=='ads' ? 'active' : ''}}">
 								<a class="nav-link" href="{{route('allads')}}">All Ads</a>
-							</li>
+							</li> --}}
                             <li class="nav-item {{$request=='privacy' ? 'active' : ''}}">
                                 <a class="nav-link" href="{{route('privacy_policy')}}">Privacy Policy</a>
                             </li>
@@ -31,54 +31,14 @@
 								<a class="nav-link" href="{{route('contactus')}}">Contact Us</a>
 							</li>
                             
-							{{-- <li class="nav-item dropdown dropdown-slide">
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Dashboard<span><i class="fa fa-angle-down"></i></span>
-								</a>
-
-								<!-- Dropdown list -->
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="dashboard.html">Dashboard</a>
-									<a class="dropdown-item" href="dashboard-my-ads.html">Dashboard My Ads</a>
-									<a class="dropdown-item" href="dashboard-favourite-ads.html">Dashboard Favourite Ads</a>
-									<a class="dropdown-item" href="dashboard-archived-ads.html">Dashboard Archived Ads</a>
-									<a class="dropdown-item" href="dashboard-pending-ads.html">Dashboard Pending Ads</a>
-								</div>
-							</li>
-							<li class="nav-item dropdown dropdown-slide">
-								<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Pages <span><i class="fa fa-angle-down"></i></span>
-								</a>
-								<!-- Dropdown list -->
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="about-us.html">About Us</a>
-									<a class="dropdown-item" href="contact-us.html">Contact Us</a>
-									<a class="dropdown-item" href="user-profile.html">User Profile</a>
-									<a class="dropdown-item" href="404.html">404 Page</a>
-									<a class="dropdown-item" href="package.html">Package</a>
-									<a class="dropdown-item" href="single.html">Single Page</a>
-									<a class="dropdown-item" href="store.html">Store Single</a>
-									<a class="dropdown-item" href="single-blog.html">Single Post</a>
-									<a class="dropdown-item" href="blog.html">Blog</a>
-
-								</div>
-							</li>
-							<li class="nav-item dropdown dropdown-slide">
-								<a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Listing <span><i class="fa fa-angle-down"></i></span>
-								</a>
-								<!-- Dropdown list -->
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="category.html">Ad-Gird View</a>
-									<a class="dropdown-item" href="ad-listing-list.html">Ad-List View</a>
-								</div>
-							</li> --}}
+						
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
 							@guest
 								
 							
 							<li class="nav-item">
-								<a class="nav-link login-button" href="login.html">Login As Buyer</a>
+								<a class="nav-link login-button" href="{{route('login',['buyer'=>'yes'])}}">Login As Buyer</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link text-white add-button" href="{{route('login',['seller'=>'yes'])}}">Login As Seller</a>
@@ -103,11 +63,13 @@
 
 								<!-- Dropdown list -->
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="dashboard.html">Dashboard</a>
-									<a class="dropdown-item" href="dashboard-my-ads.html">Dashboard My Ads</a>
-									<a class="dropdown-item" href="dashboard-favourite-ads.html">Dashboard Favourite Ads</a>
+								<a class="dropdown-item" href="{{route('my-dashboard.index')}}"><i class="fa fa-home"></i> My Dashboard</a>
+									<a class="dropdown-item" href="{{route('b_account')}}"><i class="fa fa-cog"></i> Account Setting</a>
+									{{-- <a class="dropdown-item" href="{{route('b_change_password')}}"><i class="fa fa-key"></i> Change Password</a> --}}
+									{{--<a class="dropdown-item" href="dashboard-favourite-ads.html">Dashboard Favourite Ads</a>
 									<a class="dropdown-item" href="dashboard-archived-ads.html">Dashboard Archived Ads</a>
-									<a class="dropdown-item" href="dashboard-pending-ads.html">Dashboard Pending Ads</a>
+									<a class="dropdown-item" href="dashboard-pending-ads.html">Dashboard Pending Ads</a> --}}
+									<form action="{{route('logout')}}" id="logoutfrm" method="post">@csrf<span class="dropdown-item" style="cursor: pointer" onclick="logout()"><i class="fa fa-sign-out"></i> Logout</span></form>
 								</div>
 							</li>	
 								@endif

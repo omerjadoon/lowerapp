@@ -10,7 +10,7 @@ use Auth;
 class MainController extends Controller
 {
     public function index(){
-        $data['ad']=Ad::with('belongtocategory')->orderBy('created_at','desc')->get();
+        $data['ad']=Ad::with('belongtocategory')->orderBy('created_at','desc')->take(4)->get();
         $data['cat']=Category::take(8)->get();
         
         return view('welcome',$data);
@@ -22,13 +22,26 @@ class MainController extends Controller
 
      public function allads(Request $request)
     {
-        $data['ad']=Ad::with('belongtocategory')->orderBy('created_at','desc')->paginate(8);
+        $data['ad']=Ad::with('belongtocategory');
+        if(!empty($request->title)){
+            $data['ad']=$data['ad']->where('title','like', '%' . $request->title.'%');
+        }
+        if(!empty($request->category)){
+            $cat=Category::where('cat_slug',$request->category)->first();
+            $data['cat_name']=$cat->name;
+            $data['ad']=$data['ad']->where('cat_id',$cat->id);
+        }
+        if(!empty($request->p_range_from) || !empty($request->p_range_to)){
+            $data['ad']=$data['ad']->whereBetween('price_range',[$request->p_range_from,$request->p_range_to]);
+        }
+        $data['ad']=$data['ad']->orderBy('created_at','desc')->paginate(8);
+        // dd($data['ad']);
         $data['cat']=Category::with('cathasmanyad')->get();
         return view('ads',$data);
     }
     public function adsdesc(Request $request,$slug){
        
-        $data['ad']=Ad::with('belongtocategory','adhasmanyimage','belongtoseller')->where('ad_slug',$slug)->first();
+        $data['ad']=Ad::with('adhasmanyimage')->where('ad_slug',$slug)->first();
         return view('addetail',$data);
     }
 

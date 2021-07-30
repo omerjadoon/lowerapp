@@ -1,4 +1,4 @@
-@extends('layouts.app',['title' => 'Login'])
+@extends('user.seller.layouts.app',['title' => 'Login'])
 @push('css')
   <style>
           ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -58,11 +58,13 @@
                   <div class="social mt-4">
                     <div class="btn-showcase"><a class="btn btn-light" href="https://www.linkedin.com/login" target="_blank"><i class="txt-linkedin" data-feather="linkedin"></i> LinkedIn </a><a class="btn btn-light" href="https://twitter.com/login?lang=en" target="_blank"><i class="txt-twitter" data-feather="twitter"></i>twitter</a><a class="btn btn-light" href="https://www.facebook.com/" target="_blank"><i class="txt-fb" data-feather="facebook"></i>facebook</a></div>
                   </div> -->
-                  <p class="mt-4 mb-0">Don't have account?</p> 
-                  <span>
-                {{--  <a class="ml-2" href="{{route('register',['business'=>'yes'])}}">Are you a Business looking for exposure?</a></br>--}} 
-                        <a class="ml-2" href="#" data-toggle="modal" data-target="#myModal">Are you a Media Company?</a>
-                </span>
+                  <input type="hidden" value="{{\Request::get('seller') ? 'seller' : 'buyer'}}" name="role" >
+                  <p class="mt-4 mb-0">Don't have account?
+                 
+                 <a class="ml-2" href="{{\Request::get('seller') ? route('register',['seller'=>'yes']) : route('register',['buyer'=>'yes'])}}">Register Now</a></br> 
+                        
+                </p> 
+                 
                 </form>
               </div>
             </div>
@@ -70,66 +72,7 @@
         </div>
       </div>
         </div>
-         <!-- Modal -->
-    <div class="modal modalAnimate fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-animation-in="bounceIn" data-animation-out="bounceOut">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <form method="get" action="{{route('register')}}">
-                    <input type="hidden" name="media" value="yes" >
-                  <!-- Modal Header -->
-                  <div class="modal-header">
-                      <h4 class="modal-title">Register today and get a <b>Free Big Profit Ads Tshirt</b> worth $29.99/- absolutely free!</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  </div>
-
-                  <!-- Modal body -->
-                  <div class="modal-body">
-
-                      <div class="row">
-                          <div class="col-md-6 text-center">
-                              <img class="img-thumbnail" src="{{asset('images/bfatshirt.PNG')}}" min-height="100px">
-                          </div>
-                          <div class="col-md-6">
-                              <div class="row">
-                                  <div class="col-md-12 pbh-10">
-                                      <input type="text" class="form-control" required placeholder="Enter First Name" name="f_name" />
-                                  </div>
-                                  <div class="col-md-12 pbh-10">
-                                      <input type="text" class="form-control" required placeholder="Enter Last Name" name="l_name" />
-                                  </div>
-                                  <div class="col-md-12 pbh-10">
-                                      <input type="email" class="form-control" required placeholder="Enter Email" name="email" />
-                                  </div>
-                                  <div class="col-md-12 pbh-10">
-                                      <select class="form-control" name="size" required>
-                                        <option selected value="">Select Size</option>
-                                        <option value="S">Small</option>
-                                        <option value="M">Medium</option>
-                                        <option value="L">Large</option>
-                                        <option value="XL">extra Large</option>
-                                        <option value="XXL">Double XXL</option>
-                                      </select>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-
-                  </div>
-
-                  <!-- Modal footer -->
-                  <div class="modal-footer">
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Register Now</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                  </form>
-
-              </div>
-          </div>
-      </div>
-  </div>
+    
 @endsection
 
 @push('js')

@@ -39,17 +39,17 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-12 col-md-12 align-content-center">
-                                <form>
+                                <form action="{{route('allads')}}" method="GET" enctype="multipart/form-data">
                                     <div class="form-row">
                                         <div class="col-md-1"></div>
                                         <div class="form-group col-md-4">
-                                            <input type="text" class="form-control my-2 my-lg-1" id="inputtext4" placeholder="What are you looking for">
+                                            <input type="text" class="form-control my-2 my-lg-1" name="title" id="inputtext4" placeholder="What are you looking for">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <select class="w-100 form-control mt-lg-1 mt-md-2">
-													<option>Category</option>
+                                            <select name="category" class="w-100 form-control mt-lg-1 mt-md-2">
+													<option value="">Category</option>
 													@foreach($cat as $key=>$item)
-													<option value="{{$item->id}}">{{$item->name}}</option>
+													<option value="{{$item->cat_slug}}">{{$item->name}}</option>
 													@endforeach
 												</select>
                                         </div>
@@ -87,7 +87,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h2>Featured Adds</h2>
+                    <h2>Ads</h2>
                     {{--
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p> --}}
                 </div>
@@ -106,22 +106,24 @@
                             <div class="card">
                                 <div class="thumb-content">
                                     <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
+                                    {{-- <a href="single.html"> --}}
 										<img class="card-img-top img-fluid" src="{{asset($item->cover_file_path)}}" alt="Card image cap">
-									</a>
+									{{-- </a> --}}
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="single.html">{{$item->title}}</a></h4>
+                                    <h4 class="card-title"><a href="{{route('allads',['title'=>$item->title])}}">{{$item->title}}</a></h4>
                                     <ul class="list-inline product-meta">
                                         <li class="list-inline-item">
-                                            <a href="single.html"><i class="fa fa-list-alt"></i>{{$item->belongtocategory->name}}</a>
+                                            <a href="{{route('allads',['category'=>$item->belongtocategory->cat_slug])}}"><i class="fa fa-list-alt"></i>{{$item->belongtocategory->name}}</a>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a href="#"><i class="fa fa-calendar"></i>{!! $item->created_at->format('d M') !!}</a>
+                                            <a href="javascript:void(0);"><i class="fa fa-calendar"></i>{!! $item->created_at->format('d M') !!}</a>
                                         </li>
                                     </ul>
                                     <p class="card-text">{{Str::limit($item->desc, 80, ' ...')}}</p>
-                                   
+                                   <div class="text-center">
+                                    <a href="{{route('adsdesc',[$item->ad_slug])}}" class="btn btn-primary p-2"><i class="fa fa-eye"></i> view</a>
+                                   </div>
                                 </div>
                             </div>
                         </div>
@@ -133,6 +135,9 @@
 
 
         </div>
+          <div class="section-title">
+                    <a href="{{route('allads')}}" class="btn btn-info">View All</a>
+                </div>
     </div>
 </section>
 
@@ -193,7 +198,7 @@
                 <div class="counter-content text-center bg-light py-4 rounded">
                     <i class="fa fa-smile-o d-block"></i>
                     <span class="counter my-2 d-block" >{{App\BuyerDetail::count()}}</span>
-                    <h5>Happy Customers</h5>
+                    <h5>Verified Buyers</h5>
 
                 </div>
             </div>
@@ -208,7 +213,7 @@
                 <div class="counter-content text-center bg-light py-4 rounded">
                     <i class="fa fa-user-o d-block"></i>
                     <span class="counter my-2 d-block" >{{App\SellerDetail::count()}}</span>
-                    <h5>Verified Seller</h5>
+                    <h5>Trusted Seller</h5>
                 </div>
             </div>
            
@@ -222,4 +227,10 @@
         </div>
     </div>
 </section>
-@endsection @push('js') @endpush
+@endsection
+@push('nice-select-js')
+<script src="{{asset('buyer/plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+@endpush
+@push('js') 
+
+@endpush

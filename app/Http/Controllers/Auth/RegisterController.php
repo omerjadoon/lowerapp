@@ -46,11 +46,10 @@ class RegisterController extends Controller
     public function showRegistrationForm() {
 
         $data['country']=Country::orderBy('created_at', 'desc')->get();
-        if(\Request::get('seller')){
-            return view('user.seller.pages.register',$data);
-        }else if(\Request::get('buyer')){
-            return view('user.buyer.pages.register',$data);
-        }else{
+        if(\Request::get('seller') || \Request::get('buyer')){
+        return view('auth.register',$data);
+        }
+       else{
             return redirect()->back();
         }
             

@@ -1,4 +1,4 @@
-@extends('user.buyer.layouts.app',['request'=>'ads','title'=>'About Us']) @push('css')
+@extends('user.buyer.layouts.app',['request'=>'ads','title'=>'All Ads']) @push('css')
 <link rel="stylesheet" type="text/css" href="{{asset('user/assets/css/vendors/range-slider.css')}}">
 <style>
     .irs-line-mid,
@@ -7,6 +7,10 @@
     .irs-bar,
     .irs-bar-edge {
         background-color: #4466f2;
+    }.active-search{
+        color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
     }
 </style>
 @endpush @section('content')
@@ -31,12 +35,17 @@
                     <!-- Advance Search -->
                     <div class="advance-search">
                         <form action="{{route('allads')}}" method="get" enctype="multipart/form-data">
-                           
+                            @if(\Request::get('page'))
+                                <input type="hidden" value="{{\Request::get('page')}}" name="page" />
+                                @endif
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <label class="control-label" for="inputtext4">Ad Title</label>
                                     <input type="text" class="form-control my-2 my-lg-0" name="title" value="{{\Request::get('title')}}" id="inputtext4" placeholder="What are you looking for">
                                 </div>
+                                @if(\Request::get('category'))
+                                <input type="hidden" value="{{\Request::get('category')}}" name="category" />
+                                @endif
                                 <div class="col-md-1"></div>
                                 <div class="form-group col-md-4">
 
@@ -49,9 +58,10 @@
                                 </div>
                            
                                 <div class="col-md-1"></div>
-                                <div class="form-group col-md-2 mt-4">
-
-                                    <button type="submit" class="btn btn-primary">Search Now</button>
+                                <div class="form-group col-md-3 mt-4 btn-group">
+                                   
+                                    <button type="submit" class="btn btn-primary p-2">Search Now</button>
+                                    <a href="{{route('allads')}}" class="btn btn-info p-4">{{\Request::get('title') || \Request::get("category")  || \Request::get('p_range_from') || \Request::get('p_range_to') ? 'Reset' : 'Refresh'}} </a>
                                 </div>
                             </div>
                         </form>
@@ -70,7 +80,7 @@
 
                             <li>
                                 <div class="row">
-                                    <div class="col-md-10"><a href="category.html">{{$item->name}}</a></div>
+                                    <div class="col-md-10"><a class="{{$item->cat_slug==\Request::get('category') ? 'active-search' : ''}}" href="{{route('allads',['title'=>\Request::get('title'),'category'=>$item->cat_slug,'p_range_from'=>\Request::get('p_range_from'),'p_range_to'=>\Request::get('p_range_to')])}}" >{{$item->name}}</a></div>
                                     <div class="col-md-2"><span class="badge badge-info mt-3">{{$item->cathasmanyad->count()}}</span></div>
                                 </div>
                             </li>
@@ -86,10 +96,11 @@
                 <div class="category-search-filter">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Results For "Electronics"</h2>
+                            <h2>{{$ad->count()}} Result</h2>
+                            {{-- <h2>Results For "category = {{$cat_name}}"</h2> --}}
                         </div>
                         <div class="col-md-12">
-                            <p>123 Results on 12 December, 2017</p>
+                            {{-- <p>{{$ad->count()}} Result</p> --}}
                         </div>
 
 
@@ -153,7 +164,12 @@
         </div>
     </div>
 </section>
-@endsection @push('js')
+@endsection 
+@push('nice-select-js')
+<script src="{{asset('buyer/plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+@endpush
+@push('js')
+
 <script src={{asset('user/assets/js/range-slider/ion.rangeSlider.min.js') }}></script>
 <script src={{asset('user/assets/js/range-slider/rangeslider-script.js') }}></script>
 <script>

@@ -34,10 +34,9 @@ class HomeController extends Controller
      public function change_passwordstore(Request $request){
 
            $this->validate($request,[
-               'oldpassword'=>['required','string'],
-               'password'=>['required','string'],
-               'password_confirmation' =>['required','string'],
-            
+            'oldpassword' => 'required|string',
+            'password' => 'required|min:8|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'required|string|min:8',
             ]);
          try{  
             if(Hash::check($request->oldpassword,Auth::user()->password)){

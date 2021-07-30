@@ -67,12 +67,12 @@
 <script src="{{asset('buyer/plugins/tether/js/tether.min.js')}}"></script>
 <script src="{{asset('buyer/plugins/raty/jquery.raty-fa.js')}}"></script>
 <script src="{{asset('buyer/plugins/slick-carousel/slick/slick.min.js')}}"></script>
-<script src="{{asset('buyer/plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+@stack('nice-select-js')
 <script src="{{asset('buyer/plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
 <script src="{{asset('buyer/plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
 <!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-<script src="{{asset('buyer/plugins/google-map/gmap.js')}}"></script>
+{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script> --}}
+{{-- <script src="{{asset('buyer/plugins/google-map/gmap.js')}}"></script> --}}
 <script src="{{asset('buyer/js/script.js')}}"></script>
 <script>
   function logout() {

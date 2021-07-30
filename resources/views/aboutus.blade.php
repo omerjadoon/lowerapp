@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="about-img">
-                    <img src="images/about/about.jpg" class="img-fluid w-100 rounded" alt="">
+                    <img src="{{asset('buyer/images/about/about.jpg')}}" class="img-fluid w-100 rounded" alt="">
                 </div>
             </div>
             <div class="col-lg-6 pt-5 pt-lg-0">
@@ -56,7 +56,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="card my-3 my-lg-0">
-                    <img class="card-img-top" src="images/team/team1.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <img class="card-img-top" src="{{asset('buyer/images/team/team1.jpg')}}" class="img-fluid w-100" alt="Card image cap">
                     <div class="card-body bg-gray text-center">
                         <h5 class="card-title">John Doe</h5>
                         <p class="card-text">Founder / CEO</p>
@@ -65,7 +65,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="card my-3 my-lg-0">
-                    <img class="card-img-top" src="images/team/team2.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <img class="card-img-top" src="{{asset('buyer/images/team/team2.jpg')}}" class="img-fluid w-100" alt="Card image cap">
                     <div class="card-body bg-gray text-center">
                         <h5 class="card-title">John Doe</h5>
                         <p class="card-text">Founder / CEO</p>
@@ -74,7 +74,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="card my-3 my-lg-0">
-                    <img class="card-img-top" src="images/team/team3.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <img class="card-img-top" src="{{asset('buyer/images/team/team3.jpg')}}" class="img-fluid w-100" alt="Card image cap">
                     <div class="card-body bg-gray text-center">
                         <h5 class="card-title">John Doe</h5>
                         <p class="card-text">Founder / CEO</p>
@@ -83,7 +83,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="card my-3 my-lg-0">
-                    <img class="card-img-top" src="images/team/team4.jpg" class="img-fluid w-100" alt="Card image cap">
+                    <img class="card-img-top" src="{{asset('buyer/images/team/team4.jpg')}}" class="img-fluid w-100" alt="Card image cap">
                     <div class="card-body bg-gray text-center">
                         <h5 class="card-title">John Doe</h5>
                         <p class="card-text">Founder / CEO</p>
@@ -102,7 +102,7 @@
                 <div class="counter-content text-center bg-light py-4 rounded">
                     <i class="fa fa-smile-o d-block"></i>
                     <span class="counter my-2 d-block" >{{App\BuyerDetail::count()}}</span>
-                    <h5>Happy Customers</h5>
+                    <h5>Verified Buyers</h5>
 
                 </div>
             </div>
@@ -117,20 +117,18 @@
                 <div class="counter-content text-center bg-light py-4 rounded">
                     <i class="fa fa-user-o d-block"></i>
                     <span class="counter my-2 d-block" >{{App\SellerDetail::count()}}</span>
-                    <h5>Verified Seller</h5>
+                    <h5>Trusted Seller</h5>
                 </div>
             </div>
            
-            {{-- <div class="col-lg-3 col-sm-6 my-lg-0 my-3">
-                <div class="counter-content text-center bg-light py-4 rounded">
-                    <i class="fa fa-smile-o d-block"></i>
-                    <span class="counter my-2 d-block" data-count="200">0</span>
-                    <h5>Happy Customers</h5>
-                </div>
-            </div> --}}
+         
         </div>
     </div>
 </section>
 @endsection
+@push('nice-select-js')
+<script src="{{asset('buyer/plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+@endpush
 @push('js')
+
 @endpush

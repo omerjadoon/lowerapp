@@ -23,6 +23,7 @@
 					
 				
 					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+						<a href="{{route('allads',['category'=>$itme->cat_slug])}}">
 						<div class="category-block">
 							<div class="header">
 								{{-- <i class="fa fa-laptop icon-bg-1"></i>  --}}
@@ -34,6 +35,7 @@
                             <center><p>{{$itme->cathasmanyad->count()}} Ads</p></center>
 							
 						</div>
+					</a>
 					</div> 
 					@endforeach
 					
@@ -47,6 +49,9 @@
 	<!-- Container End -->
 </section>
 @endsection
+@push('nice-select-js')
+<script src="{{asset('buyer/plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+@endpush
 @push('js')
-    
+
 @endpush

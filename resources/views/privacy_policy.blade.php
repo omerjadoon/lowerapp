@@ -13,8 +13,9 @@
 			<div class="col-md-8 offset-md-2 text-center">
 				<!-- Title text -->
 				<h3>Terms & Conditions</h3>
+                <p class="text-white">If you require any more information or have any questions about our privacy policy, please feel free to contact us using <a href="{{route('contactus')}}">Contact Us</a>form. Thank you.</p>
 			</div>
-		</div>
+		</div> 
 	</div>
 	<!-- Container End -->
 </section>
@@ -38,5 +39,9 @@
 </section>
 
 @endsection
+@push('nice-select-js')
+<script src="{{asset('buyer/plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+@endpush
 @push('js')
+    
 @endpush

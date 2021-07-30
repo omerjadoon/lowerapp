@@ -1,4 +1,4 @@
-@extends('user.buyer.layouts.app',['request'=>'ads','title'=>'About Us']) @push('css')
+@extends('user.buyer.layouts.app',['request'=>'ads','title'=>'Ads Detail']) @push('css')
 <style>
     .product-slider .slick-dots li img{
         min-width: 112px;
@@ -80,9 +80,9 @@ img.zoom {
 					<h1 class="product-title">{{$ad->title}}</h1>
 					<div class="product-meta">
 						<ul class="list-inline">
-							<li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">{{$ad->belongtoseller->f_name}}</a></li>
-							<li class="list-inline-item"><i class="fa fa-list-alt"></i> Category<a href="">{{$ad->belongtocategory->name}}</a></li>
-							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location<a href=""> {{$ad->belongtoseller->belongtocity->name.' '.$ad->belongtoseller->belongtocity->belongtostate->belongtocountry->name}}</a></li>
+							<li class="list-inline-item"><i class="fa fa-user-o"></i> By {{$ad->belongtoseller->f_name}}</li>
+							<li class="list-inline-item"><i class="fa fa-list-alt"></i> Category  <a href="{{route('allads',['category'=>$ad->belongtocategory->cat_slug])}}">{{$ad->belongtocategory->name}}</a></li>
+							<li class="list-inline-item"><i class="fa fa-location-arrow"></i>  Location {{$ad->belongtoseller->belongtocity->name.' '.$ad->belongtoseller->belongtocity->belongtostate->name.', '.$ad->belongtoseller->belongtocity->belongtostate->belongtocountry->name}}</li>
 						</ul>
 					</div>
 
@@ -118,10 +118,10 @@ img.zoom {
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <h3 ><b> Price : </b>${{number_format($ad->price_range)}} </h3>
                                     
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6">
                                     <h3 ><b>Posted At :</b> {{$ad->created_at->format('M d,Y' )}}</h3>
                                 </div>
@@ -134,10 +134,10 @@ img.zoom {
 			</div>
 			<div class="col-md-4">
 				<div class="sidebar">
-					{{-- <div class="widget price text-center">
+					<div class="widget price text-center">
 						<h4>Price</h4>
 						<p>${{number_format($ad->price_range)}}</p>
-					</div> --}}
+					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
 						<img class="rounded-circle img-fluid mb-5 px-5" src="{{asset($ad->belongtoseller->file_path)}}" alt="">
@@ -171,7 +171,12 @@ img.zoom {
 	<!-- Container End -->
 </section>
 
-@endsection @push('js')
+@endsection
+@push('nice-select-js')
+<script src="{{asset('buyer/plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+@endpush
+ @push('js')
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script>
       $(".fancybox").fancybox({

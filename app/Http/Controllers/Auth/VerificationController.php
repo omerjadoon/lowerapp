@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
-
+use Auth;
 class VerificationController extends Controller
 {
     /*
@@ -33,6 +33,10 @@ class VerificationController extends Controller
      *
      * @return void
      */
+    public function show()
+    {
+       return view('user.'.Auth::user()->role.'.pages.verify');
+    }
     public function __construct()
     {
         $this->middleware('auth');
