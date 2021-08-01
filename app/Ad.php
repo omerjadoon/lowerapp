@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class Ad extends Model
 {
     public function adhasmanyimage(){
@@ -14,5 +14,11 @@ class Ad extends Model
      }
      public function belongtocategory(){
         return $this->belongsTo('App\Category','cat_id','id');
+     }
+     public function adhasmanyrequest(){
+        return $this->hasMany('App\AdRequest', 'ad_id', 'id');
+    }
+    public function adrequestsend () {
+        return $this->hasOne('App\AdRequest', 'ad_id', 'id')->where('buyer_id',Auth ::user()->buyerDetail->id)->exists();
      }
 }

@@ -65,6 +65,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 	  	Route::resource('my-dashboard','BuyerController');
 		Route::get('account-setting','BuyerController@account_setting')->name('b_account');
 		Route::get('change-password','BuyerController@change_password')->name('b_change_password');
+		Route::get('make-offer','AdController@make_offer')->name('make_offer');
+		Route::get('ads','AdController@index')->name('myads');
+
 	});
   });
 

@@ -29,6 +29,8 @@
   <link href="{{asset('buyer/plugins/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
   <!-- CUSTOM CSS -->
   <link href="{{asset('buyer/css/style.css')}}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -70,6 +72,9 @@
 @stack('nice-select-js')
 <script src="{{asset('buyer/plugins/fancybox/jquery.fancybox.pack.js')}}"></script>
 <script src="{{asset('buyer/plugins/smoothscroll/SmoothScroll.min.js')}}"></script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
 <!-- google map -->
 {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script> --}}
 {{-- <script src="{{asset('buyer/plugins/google-map/gmap.js')}}"></script> --}}

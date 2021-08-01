@@ -57,7 +57,7 @@ class AdController extends Controller
     {
         //
     }
-
+   
     /**
      * Display the specified resource.
      *

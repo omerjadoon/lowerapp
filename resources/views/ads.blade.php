@@ -139,6 +139,10 @@
                                            <div class="form-group col-md-12">
                                                <a href="{{route('adsdesc',[$item->ad_slug])}}" class="btn btn-primary p-2"><i class="fa fa-eye"></i> view</a>
                                            </div>
+                                           @if($item->adrequestsend())    
+                                           <div class="form-group col-md-12"><span class="badge badge-secondary">Applied</span></div>
+                           
+                             @endif   
                                        </div>
                                     {{-- </div> --}}
                                 </div>

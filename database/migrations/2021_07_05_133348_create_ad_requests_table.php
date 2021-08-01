@@ -16,6 +16,7 @@ class CreateAdRequestsTable extends Migration
         Schema::create('ad_requests', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->bigIncrements('id');
+            $table->string('ad_u_id');
             $table->bigInteger('seller_id')->unsigned();
             $table->foreign('seller_id')->references('id')->on('seller_details')->onUpdate('cascade')->onDelete('cascade');
             $table->bigInteger('ad_id')->unsigned();
