@@ -112,7 +112,7 @@
                   <td style="text-align: center;"><h2>WELCOME!</h2></td>
                 </tr> -->
                 <tr>
-                  <td style="text-align: center;"><img src="{{asset('user/assets/images/logo/loginlogo.png')}}" alt="" style=";margin-bottom: 30px;"></td>
+                  <td style="text-align: center;"><img src="{{asset('user/assets/images/logo/loginlogo.PNG')}}" alt="" style=";margin-bottom: 30px;"></td>
                 </tr>
                 <tr>
                   <td><p style="font-size: 14px;padding: 5px;">Hello Admin,</p></td>

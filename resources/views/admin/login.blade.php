@@ -32,7 +32,7 @@
             <div class="card-body">
                     @include('alerts.error-alert',['ses_name'=>'error'])
               <div class="brand-wrapper">
-                <img src="{{asset('user/assets/images/logo/loginlogo.png')}}" alt="logo" class="logo">
+                <img src="{{asset('user/assets/images/logo/loginlogo.PNG')}}" alt="logo" class="logo">
               </div>
               <p class="login-card-description">Sign into your account</p>
 
