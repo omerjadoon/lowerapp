@@ -12,4 +12,7 @@ class BuyerDetail extends Model
      public function buyerhasmanyadrequest(){
         return $this->hasMany('App\AdRequest', 'buyer_id','id');
      }
+     public function belongtouser(){
+      return $this->belongsTo('App\User','user_id','id');
+   }
 }

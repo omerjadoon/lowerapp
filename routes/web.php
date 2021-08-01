@@ -91,6 +91,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 		//ad controller
 		Route::resource('ad','AdController');
 		Route::get('ad-offers','AdController@adofer')->name('adofer');
+		Route::get('ad-offers/{offer_id}','AdController@offershow')->name('offershow');
 		//contact us
 		Route::get('contact-list','SettingController@contact_list')->name('contact_list');
 		//country

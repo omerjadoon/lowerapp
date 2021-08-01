@@ -92,7 +92,10 @@ img.zoom {
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-7"> <h4>{{strtoupper($adsection->title)}}</h4></div>
+                            <div class="col-md-5"> <h4>{{strtoupper($adsection->title)}}</h4></div>
+                            <div class="col-md-2">
+                                @if($adsection->status==1) <span class="badge badge-success mt-10">Sold</span>@endif
+                            </div>
                             <div class="col-md-2 text-right">
                                 <h4><b>Posted At :</b></h4> 
                             </div>
@@ -116,6 +119,8 @@ img.zoom {
                                             <li class="p-10"><span style="font-size: 20px"><b>Price Range : </b></span><span style="font-size: 18px">{{number_format($adsection->price_range)}}$</span></li>
                                             <li class="p-10"><span style="font-size: 20px"><b>Lower Selling Price : </b></span><span style="font-size: 18px">{{number_format($adsection->lower_selling_price)}}$</span></li>
                                             <li class="p-10"><span style="font-size: 20px"><b>Description : </b></span><span style="font-size: 18px">{{$adsection->desc}}</span></li>
+                                            <li class="p-10"><span style="font-size: 20px"><b>Total Offer : </b></span><span style="font-size: 18px"><a href="{{route('adofer',['ad_id'=>$adsection->id])}}">{{$adsection->adhasmanyrequest->count()}}</span></li>
+                                          
                                        
                              </div>
                          </div>

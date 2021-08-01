@@ -5,6 +5,11 @@
         border: none;
         background: none;
     }
+    .float {
+        float: right !important;
+    }.ft-20{
+        font-size: 20px;
+}
 </style>
 @endpush
 @section('content')
@@ -19,8 +24,13 @@
         <div class="row">
                         <div class="col-lg-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Ads Offer List
+                                <div class="panel-heading text-center">
+                                    @if(\Request::get('ad_id'))
+                         <a href="{{route('ad.show',$adid)}}">{{$ad_title}}</a> 
+                         @else 
+                           Ad 
+                           @endif 
+                      Offer List
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -30,7 +40,9 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Offer Id</th>
+                                                    @if(empty(\Request::get('ad_id')))
                                                     <th>Ad Title</th>
+                                                    @endif
                                                     <th>Offer Price</th>
                                                     <th>Offer Date</th>
                                                     <th>Status</th>
@@ -42,11 +54,13 @@
                                                 <tr>
                                                     <td>{{$key+1}}</td>
                                                     <td>{{$item->ad_u_id}}</td>
+                                                    @if(empty(\Request::get('ad_id')))
                                                     <td><a href="{{route('ad.show',$item->belongtoads->id)}}">{{$item->belongtoads->title}}</a></td>
+                                                    @endif
                                                     <td>{{number_format($item->offer_price)}}$</td>
                                                     <td>{{$item->created_at->format('d M,Y h:i:s A')}}</td>    
                                                     <td >{{$item->status===0 ? 'Pending' : ($item->status==1 ? 'Sold' : ( $item->status==2 ? 'Reject' : ''))}}</td>   
-                                                    <td><a href="" ><i class="fa fa-eye"></i></a></td>
+                                                    <td><a href="{{route('offershow',$item->id)}}" ><i class="fa fa-eye"></i></a></td>
                                                 </tr>
                                                 @endforeach
                                               

@@ -16,6 +16,7 @@ class SellerDetail extends Model
      public function belongtouser(){
         return $this->belongsTo('App\User','user_id','id');
      }
+  
 
 }
 

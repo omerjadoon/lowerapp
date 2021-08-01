@@ -37,7 +37,14 @@ class AdController extends Controller
         return view('admin.pages.adindex',$data);
     }
     public function adofer(Request $request){
-        $data['offer']=AdRequest::orderBy('created_at','desc')->get();
+        $data['offer']=new AdRequest;
+        if($request->ad_id){
+            $data['offer']= $data['offer']->where('ad_id',$request->ad_id);
+            $ad=Ad::findorFail($request->ad_id);
+            $data['ad_title']=$ad->title;
+            $data['adid']=$ad->id;
+        }
+        $data['offer']= $data['offer']->orderBy('created_at','desc')->get();
         return view('admin.pages.adoffer',$data);
     }
 
@@ -73,6 +80,12 @@ class AdController extends Controller
         $data['adsection']=Ad::with('adhasmanyimage')->where('id',$id)->first();
         // dd($data);
         return view('admin.pages.addetail',$data);
+    }
+    public function offershow($id)
+    {
+        $data['adsection']=AdRequest::findorFail($id);
+        // dd($data);
+        return view('admin.pages.adofferdetail',$data);
     }
 
     /**
