@@ -148,14 +148,20 @@ img.zoom {
                         <p class="member-time">Contact # {{$ad->belongtoseller->phone}}</p>
 						{{-- <a href="">See all ads</a> --}}
 						<ul class="list-inline mt-20">
-                            
+                            @if($ad->status==0)
 				 @if(!$ad->adrequestsend())
 							<li class="list-inline-item"><a href="{{route('make_offer',['ad'=>$ad->id])}}" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
 									offer</a></li>
-                             @elseif($ad->adrequestsend())    
-                             <li class="list-inline-item"><button class="badge badge-success">Applied</button></li>
-                           
-                             @endif   
+                             @elseif($ad->adrequestsend())   
+                               @if($adstatus->status==0)
+                                <li class="list-inline-item"><button class="badge badge-warning">Offer Pending</button></li>
+                                @elseif($adstatus->status==2)
+                                <li class="list-inline-item"><button class="badge badge-danger">Offer Rejected</button></li>
+                                @endif   
+                              @endif  
+                             @elseif($ad->status==1)
+                             <li class="list-inline-item"><button class="badge badge-success">Sold</button></li>
+                             @endif
 						</ul>
 					</div>
 					

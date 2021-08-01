@@ -19,6 +19,8 @@ class Ad extends Model
         return $this->hasMany('App\AdRequest', 'ad_id', 'id');
     }
     public function adrequestsend () {
+        if(Auth::check()){
         return $this->hasOne('App\AdRequest', 'ad_id', 'id')->where('buyer_id',Auth ::user()->buyerDetail->id)->exists();
+        }
      }
 }

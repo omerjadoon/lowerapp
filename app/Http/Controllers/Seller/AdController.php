@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Mail;
-use App\{User,Country,City,State,BuyerDetail,Category,Ad,AdImage,SellerDetail};
+use App\{User,Country,City,State,BuyerDetail,Category,Ad,AdImage,SellerDetail,AdRequest};
 use DB;
 use Auth;
 

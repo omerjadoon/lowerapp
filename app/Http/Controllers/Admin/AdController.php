@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Mail;
-use App\{User,Country,City,State,BuyerDetail,Category,Ad,AdImage,SellerDetail};
+use App\{User,Country,City,State,BuyerDetail,Category,Ad,AdImage,SellerDetail,AdRequest};
 use DB;
 use Auth;
 class AdController extends Controller
@@ -35,6 +35,10 @@ class AdController extends Controller
             }
             $data['adsection']=$data['adsection']->orderBy('created_at','desc')->paginate(12);
         return view('admin.pages.adindex',$data);
+    }
+    public function adofer(Request $request){
+        $data['offer']=AdRequest::orderBy('created_at','desc')->get();
+        return view('admin.pages.adoffer',$data);
     }
 
     /**

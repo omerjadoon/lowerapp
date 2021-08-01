@@ -10,7 +10,7 @@ use App\{User,Country,City,State,BuyerDetail,Category,Ad,AdImage,SellerDetail};
 use DB;
 use Auth;
 
-class SellerController extends Controller
+class BuyerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +19,9 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $data['seller']=User::with('sellerDetail')->orderBy('created_at','desc')->where('role','seller')->get();
+        $data['buyer']=User::with('buyerDetail')->orderBy('created_at','desc')->where('role','buyer')->get();
         
-        return view('admin.pages.sellerindex',$data);
+        return view('admin.pages.buyerindex',$data);
     }
 
     /**
@@ -53,8 +53,8 @@ class SellerController extends Controller
      */
     public function show($id)
     {
-        $data['seller']=User::findorFail($id);
-        return view('admin.pages.sellerdetail',$data);
+        $data['buyer']=User::findorFail($id);
+        return view('admin.pages.buyerdetail',$data);
     }
 
     /**

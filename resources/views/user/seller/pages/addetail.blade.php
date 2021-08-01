@@ -62,7 +62,17 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>{{strtoupper($ad->title)}}</h5>
+                    <div class="row">
+                        <div class="col-md-6"><h5>{{strtoupper($ad->title)}}</h5></div>
+                        <div class="col-md-6 text-right">
+                            @if($ad->status==1)
+                            <span class="badge badge-success">Sold</span></br>
+                            @endif
+                            <b>Total Offers : </b><a href="{{route('ad-offers.index',['ad'=>$ad->id])}}">{{$ad->adhasmanyrequest->count()}}</a>
+                            
+                        </div>
+                    </div>
+                    
                     {{-- <span>Please edit Content According To Category </span> --}}
                      @include('alerts.error-alert',['ses_name'=>'error']) @include('alerts.success-alert',['ses'=>'success'])
                 </div>

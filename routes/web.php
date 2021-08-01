@@ -49,11 +49,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 		Route::get('account-setting','SellerController@account_setting')->name('account');
 		Route::get('change-password','SellerController@change_password')->name('change_password');
 		Route::resource('ads','AdController');
-		Route::resource('leads','LeadController');
-		Route::get('send-payment-bfa','LeadController@sendpaymenttobfa')->name('sendpaymenttobfa');
 		Route::get('upload-ads','AdController@uploadadindex')->name('upload_ad');
-		Route::get('ad-participants','AdController@ad_participants')->name('participants');
-		Route::get('get-format','AdController@get_format')->name('get-format');
+		Route::resource('ad-offers','AdrequestController');
+		Route::get('request-action','AdrequestController@requestaction')->name('requestaction');
+		// Route::get('send-payment-bfa','LeadController@sendpaymenttobfa')->name('sendpaymenttobfa');
+		// Route::get('ad-participants','AdController@ad_participants')->name('participants');
+		// Route::get('get-format','AdController@get_format')->name('get-format');
 	});
   });
 
@@ -85,8 +86,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 		//Seller Controller 
 		Route::resource('seller','SellerController');
+		//buyer controller
+		Route::resource('buyer','buyerController');
 		//ad controller
 		Route::resource('ad','AdController');
+		Route::get('ad-offers','AdController@adofer')->name('adofer');
 		//contact us
 		Route::get('contact-list','SettingController@contact_list')->name('contact_list');
 		//country

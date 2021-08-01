@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Country,State,City,User,Contactus,Category,Ad,AdImage};
+use App\{Country,State,City,User,Contactus,Category,Ad,AdImage,AdRequest};
 use Mail;
 use DB;
 use Auth;
@@ -42,6 +42,9 @@ class MainController extends Controller
     public function adsdesc(Request $request,$slug){
        
         $data['ad']=Ad::with('adhasmanyimage')->where('ad_slug',$slug)->first();
+        if(Auth::check()){
+        $data['adstatus']=AdRequest::where('ad_id',$data['ad']->id)->where('buyer_id',Auth ::user()->buyerDetail->id)->first();
+        }
         return view('addetail',$data);
     }
 

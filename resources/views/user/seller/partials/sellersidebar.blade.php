@@ -26,6 +26,9 @@
                     <li><a href="{{route('ads.index')}}">View All</a></li>
                   </ul>
                 </li>
+                <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title link-nav {{$request=='adrequest' ? 'active' : ''}}" href="{{route('ad-offers.index')}}"><i data-feather="pocket"></i><span>Ads Offer</span></a>
+                </li>
                  
               </ul>
             

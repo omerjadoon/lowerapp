@@ -22,7 +22,7 @@
                                         <a class="{{$innerrequest=='seller' ? 'active' : ''}}" href="{{route('seller.index')}}">Seller</a>
                                     </li>
                                     <li>
-                                        <a class="{{$innerrequest=='buyer' ? 'active' : ''}}" href="#">Buyer</a>
+                                        <a class="{{$innerrequest=='buyer' ? 'active' : ''}}" href="{{route('buyer.index')}}">Buyer</a>
                                     </li>
                                    
                                    
@@ -31,38 +31,13 @@
 
                             </li>
                             <li>
-                                <a href="{{route('ad.index')}}" class="{{$innerrequest=='allads' ? 'active' : ''}}"><i class="fa fa-desktop fa-fw"></i>  Ads</a>
-                            </li>
-                           {{-- <li>
                              
-                                 <a class="{{$request=='user' ? 'active' : ''}}" href="#" ><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="" >Seller</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Buyer</a>
-                                    </li>
-                                     
-                                </ul>
-                            </li> --}}
-                            {{-- <li>
-                                 <a href=""  class="{{$request=='ads' ? 'active' : ''}}"><i class="fa fa-desktop fa-fw"></i>  Ads
-                                    <span class="fa arrow"></span>
-                                 </a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a class="{{$innerrequest=='viewallads' ? 'active' : ''}}" href="{{route('business-ads.index')}}">All Ads</a>
-                                    </li>
-                                    <li>
-                                        <a class="{{$innerrequest=='viewallparticipant' ? 'active' : ''}}" href="{{route('ad-participants.index')}}">Ad Participants</a>
-                                    </li>
-                                     <li>
-                                        <a class="{{$innerrequest=='lead' ? 'active' : ''}}" href="{{route('participant_leads')}}">Ad Leads</a>
-                                    </li>
-                                     
-                                </ul>
-                            </li>--}}
+                                <a class="{{$innerrequest=='allads' ? 'active' : ''}}" href="{{route('ad.index')}}" ><i class="fa fa-desktop fa-fw"></i>  Ads</a>
+                            </li>
+                            <li>
+                                <a class="{{$request=='offer' && $innerrequest=='offer' ? 'active' : ''}}" href="{{route('adofer')}}"><i class="fa fa-get-pocket"></i> Ads Offers </a>
+                    </li>
+                    
                             <li>
                                         <a class="{{$request=='media' && $innerrequest=='media' ? 'active' : ''}}" href="{{route('cattype_index')}}"><i class="fa fa-dashboard fa-fw"></i> Categories </a>
                             </li>
