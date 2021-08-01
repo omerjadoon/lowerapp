@@ -53,7 +53,7 @@
                     <table style="width: 650px; margin: 0 auto; margin-bottom: 30px">
                       <tbody>
                         <tr>
-                          <td><img src="../assets/images/cuba-logo1.png" alt=""></td>
+                          <td><img src="../assets/images/cuba-logo1.PNG" alt=""></td>
                           <td style="text-align: right; color:#999"><span>Some Description</span></td>
                         </tr>
                       </tbody>

@@ -42,7 +42,7 @@ class MainController extends Controller
     public function adsdesc(Request $request,$slug){
        
         $data['ad']=Ad::with('adhasmanyimage')->where('ad_slug',$slug)->first();
-        if(Auth::check()){
+        if(Auth::check() && Auth::user()->role=='buyer'){
         $data['adstatus']=AdRequest::where('ad_id',$data['ad']->id)->where('buyer_id',Auth ::user()->buyerDetail->id)->first();
         }
         return view('addetail',$data);

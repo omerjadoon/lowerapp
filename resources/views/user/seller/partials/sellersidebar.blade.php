@@ -1,10 +1,10 @@
  <!-- Page Sidebar Start-->
         <div class="sidebar-wrapper">
-          <div class="logo-wrapper"><a href="{{url('/')}}"><img class="img-fluid for-light" src="{{asset('user/assets/images/logo/logo1.png')}}" alt="looginpage"><img class="img-fluid for-dark" src="{{asset('user/assets/images/logo/logo.png')}}" alt="looginpage"></a>
+          <div class="logo-wrapper"><a href="{{url('/')}}"><img class="img-fluid for-light" src="{{asset('user/assets/images/logo/logo1.PNG')}}" alt="looginpage"><img class="img-fluid for-dark" src="{{asset('user/assets/images/logo/logo.png')}}" alt="looginpage"></a>
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div>
           </div>
-          <div class="logo-icon-wrapper"><a href="{{url('/')}}"><img class="img-fluid" src="{{asset('user/assets/images/logo/logo1.png')}}" alt="looginpage"></a></div>
+          <div class="logo-icon-wrapper"><a href="{{url('/')}}"><img class="img-fluid" src="{{asset('user/assets/images/logo/logo1.PNG')}}" alt="looginpage"></a></div>
 
           <nav class="sidebar-main">
             

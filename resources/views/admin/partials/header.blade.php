@@ -1,5 +1,5 @@
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{route('main')}}"><img class="img-fluid" src="{{asset('user/assets/images/logo/logoadmin.png')}}" alt="looginpage"></a>
+                    <a class="navbar-brand" href="{{route('main')}}"><img class="img-fluid" src="{{asset('user/assets/images/logo/logoadmin.PNG')}}" alt="looginpage"></a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

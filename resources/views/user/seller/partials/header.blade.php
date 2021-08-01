@@ -13,7 +13,7 @@
       </div>
     </form>
     <div class="header-logo-wrapper">
-      <div class="logo-wrapper"><a href="{{route('main')}}"><img class="img-fluid" src="{{asset('user/assets/images/logo/logo1.png')}}" alt=""></a></div>
+      <div class="logo-wrapper"><a href="{{route('main')}}"><img class="img-fluid" src="{{asset('user/assets/images/logo/logo1.PNG')}}" alt=""></a></div>
       <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="sliders"></i></div>
     </div>
     <div class="left-header col horizontal-wrapper pl-0">
