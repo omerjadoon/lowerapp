@@ -48,7 +48,7 @@ class RunScheduler extends Command
 
         $this->info('Running scheduler');
         Artisan::$fn('schedule:run');
-        $this->info('completed, sleeping..');
+        $this->info('completed, sleeping..'.$this->nextMinute());
         sleep($this->nextMinute());
         $this->runScheduler();
     }
