@@ -52,8 +52,16 @@ class RunScheduler extends Command
         $this->info('Running scheduler');
         Artisan::$fn('schedule:run');
         $ad=Ad::where('status',0)->get();
-
-        $this->info('completed, sleeping..\n'.$this->nextMinute());
+        foreach($ad as $key=>$item){
+            $adupd=Ad::findorFail($item->id);
+            if($adupd->price_range>$adupd->lower_selling_price){
+                $adupd->price_range=$adupd->price_range-$adupd->dec_amount;
+                $adupd->day_count+=1;
+                $adupd->total_decrement_amount+=$adupd->dec_amount;
+                $adupd->update();
+            }
+        }
+        $this->info('completed, sleeping../n'.$this->nextMinute());
         sleep($this->nextMinute());
         $this->runScheduler();
 
@@ -66,11 +74,11 @@ class RunScheduler extends Command
      */
     protected function nextMinute()
     {
-        date_default_timezone_set('Australia/sydney');
-        $date = date('Y-m-d H:i:s', time());
+        // date_default_timezone_set('us/arizona');
+        $date = date('Y-m-d 20:33:60', time());
     
        $d1=strtotime($date);
-      $dat2= date('Y-m-d 24:00:00');
+      $dat2= date('Y-m-d 20:40:00');
         
         $d2 = strtotime($dat2);
         $totalSecondsDiff = abs($d1-$d2); 
