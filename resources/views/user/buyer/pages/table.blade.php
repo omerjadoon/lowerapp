@@ -38,11 +38,11 @@
                       </a>
                     </li>
                   
-                    <li class="list-inline-item">
+                    {{-- <li class="list-inline-item">
                       <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="">
                         <i class="fa fa-trash"></i>
                       </a>
-                    </li>
+                    </li> --}}
                   </ul>
                 </div>
               </td>

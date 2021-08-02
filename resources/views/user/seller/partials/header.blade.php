@@ -189,7 +189,7 @@
           <div class="media profile-media">
             <img class="b-r-10"  src="{{Auth::user()->sellerDetail->file_path !='' ? asset(Auth::user()->sellerDetail->file_path) : asset('images/avatar.png')}}" width="37px" height="37px" alt="">
             <div class="media-body"><span>{{Auth::user()->sellerDetail->f_name}} {{Auth::user()->sellerDetail->l_name}}</span>
-              <p class="mb-0 font-roboto">{{Auth::user()->role=='seller' ? 'Business' : 'Media Partner'}} <i class="middle fa fa-angle-down"></i></p>
+              <p class="mb-0 font-roboto">{{Auth::user()->role=='seller' ? 'Seller' : 'Buyer'}} <i class="middle fa fa-angle-down"></i></p>
             </div>
           </div>
           <ul class="profile-dropdown onhover-show-div">
