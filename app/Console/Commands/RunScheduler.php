@@ -49,8 +49,9 @@ class RunScheduler extends Command
         $this->info('Running scheduler');
         Artisan::$fn('schedule:run');
         $this->info('completed, sleeping..'.$this->nextMinute());
-        sleep($this->nextMinute());
-        $this->runScheduler();
+        $this->handle();
+        // sleep($this->nextMinute());
+        // $this->runScheduler();
 
     }
 
@@ -65,7 +66,7 @@ class RunScheduler extends Command
         $date = date('Y-m-d H:i:s', time());
         // dd($date);
        $d1=strtotime($date);
-      $dat2= date('Y-m-d 18:10:00');
+      $dat2= date('Y-m-d 18:13:00');
         
         $d2 = strtotime($dat2);
         $totalSecondsDiff = abs($d1-$d2); //42600225
