@@ -82,7 +82,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group mb-3">
                                         <label class="form-label">Profile Pic</label>
-                                        <div class="avatar"><img alt="" class="img-70" id="prev" src="{{asset(Auth::user()->buyerDetail->file_path)}}" data-original-title="" title=""></div>
+                                        <div class="avatar"><img alt="" class="img-70" id="prev" src="{{Auth::user()->buyerDetail->file_path !='' ? asset(Auth::user()->buyerDetail->file_path) : asset('images/avatar.png')}}" data-original-title="" title=""></div>
                                         <div class="roundedpencil"><input type="file" value="profile.jpg" name="profile" id="filee" style="display:none" onchange="previewFile(this);" data-original-title="" title=""><label for="filee"><span class="fa fa-pencil"></span></label></div>
                                     </div>
                                 </div>

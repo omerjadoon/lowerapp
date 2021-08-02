@@ -68,7 +68,7 @@
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane contact-tab-0 tab-content-child fade show active" id="v-pills-user" role="tabpanel" aria-labelledby="v-pills-user-tab">
                                 <div class="profile-mail">
-                                    <div class="media"><img class="img-70 img-fluid m-r-20 rounded-circle update_img_0" src="{{asset(Auth::user()->sellerDetail->file_path)}}" alt="" data-original-title="" title="">
+                                    <div class="media"><img class="img-70 img-fluid m-r-20 rounded-circle update_img_0" src="{{Auth::user()->sellerDetail->file_path !='' ? asset(Auth::user()->sellerDetail->file_path) : asset('images/avatar.png')}}" alt="" data-original-title="" title="">
 
                                         <div class="media-body mt-3">
                                             <h5><span class="first_name_0">{{strtoupper(Auth::user()->sellerDetail->title.'
@@ -118,7 +118,7 @@
                             <div class="col-md-3">
                                 <div class="form-group mb-3">
                                     <label class="form-label">Profile Pic</label>
-                                    <div class="avatar"><img height="70px" alt="" class="img-70 rounded-circle" id="prev" src="{{asset(Auth::user()->sellerDetail->file_path)}}" data-original-title="" title=""></div>
+                                    <div class="avatar"><img height="70px" alt="" class="img-70 rounded-circle" id="prev" src="{{Auth::user()->sellerDetail->file_path !='' ? asset(Auth::user()->sellerDetail->file_path) : asset('images/avatar.png')}}" data-original-title="" title=""></div>
                                     <div class="roundedpencil"><input type="file" value="profile.jpg" name="profile" id="filee" style="display:none" onchange="previewFile(this);" data-original-title="" title=""><label for="filee"><i class="icofont icofont-pencil-alt-5"></i></label></div>
                                 </div>
                             </div>

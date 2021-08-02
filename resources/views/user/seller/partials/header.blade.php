@@ -186,7 +186,8 @@
         </li> -->
         <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
         <li class="profile-nav onhover-dropdown p-0 mr-0">
-          <div class="media profile-media"><img class="b-r-10"  src="{{asset(Auth::user()->sellerDetail->file_path)}}" width="37px" height="37px" alt="">
+          <div class="media profile-media">
+            <img class="b-r-10"  src="{{Auth::user()->sellerDetail->file_path !='' ? asset(Auth::user()->sellerDetail->file_path) : asset('images/avatar.png')}}" width="37px" height="37px" alt="">
             <div class="media-body"><span>{{Auth::user()->sellerDetail->f_name}} {{Auth::user()->sellerDetail->l_name}}</span>
               <p class="mb-0 font-roboto">{{Auth::user()->role=='seller' ? 'Business' : 'Media Partner'}} <i class="middle fa fa-angle-down"></i></p>
             </div>

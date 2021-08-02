@@ -1,4 +1,4 @@
-@extends('user.buyer.layouts.app',['title'=>'Change Password','request'=>'setting'])
+@extends('user.buyer.layouts.app',['title'=>'My Dashboard','request'=>'setting'])
 @push('css')
 <style type="text/css">
     </style>

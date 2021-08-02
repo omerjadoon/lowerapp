@@ -4,7 +4,11 @@
       <div class="widget user-dashboard-profile user">
         <!-- User Image -->
         <div class="image d-flex justify-content-center">
+          @if(Auth::user()->buyerDetail->file_path!='')
           <img src="{{asset(Auth::user()->buyerDetail->file_path)}}" alt="" class="">
+          @else
+          <img src="{{asset('images/avatar.png')}}" alt="" class="">
+          @endif
       </div>
         <!-- User Name -->
         <h5 class="text-center">{{strtoupper(Auth::user()->buyerDetail->title.'

@@ -2,7 +2,7 @@
 <div class="widget user">
     <!-- User Image -->
     <div class="image d-flex justify-content-center">
-        <img src="{{asset(Auth::user()->buyerDetail->file_path)}}" alt="" class="">
+        <img src="{{Auth::user()->buyerDetail->file_path !='' ? asset(Auth::user()->buyerDetail->file_path) : asset('images/avatar.png')}}" alt="" class="">
     </div>
     <!-- User Name -->
     <h5 class="text-center">{{strtoupper(Auth::user()->buyerDetail->title.'
