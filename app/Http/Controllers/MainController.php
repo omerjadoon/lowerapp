@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\{Country,State,City,User,Contactus,Category,Ad,AdImage,AdRequest};
 use Mail;
 use DB;
-use Carbon\Carbon;
 use Auth;
 class MainController extends Controller
 {
