@@ -75,10 +75,10 @@ class RunScheduler extends Command
     protected function nextMinute()
     {
         // date_default_timezone_set('us/arizona');
-        $date = date('Y-m-d 20:33:60', time());
+        $date = date('Y-m-d 20:43:00', time());
     
        $d1=strtotime($date);
-      $dat2= date('Y-m-d 20:40:00');
+      $dat2= date('Y-m-d 20:45:00');
         
         $d2 = strtotime($dat2);
         $totalSecondsDiff = abs($d1-$d2); 
