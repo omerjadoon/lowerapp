@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/update/email',function(){
+  User::where('id',2)->update([
+	  'email'=>'kenu@reve.me',
+  ]);
+});
 
 Route::get('/', 'MainController@index')->name('main');
 Route::post('save-contact','MainController@savecontact')->name('save_contact');
@@ -87,7 +93,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 		//Seller Controller 
 		Route::resource('seller','SellerController');
 		//buyer controller
-		Route::resource('buyer','buyerController');
+		Route::resource('buyer','BuyerController');
 		//ad controller
 		Route::resource('ad','AdController');
 		Route::get('ad-offers','AdController@adofer')->name('adofer');
