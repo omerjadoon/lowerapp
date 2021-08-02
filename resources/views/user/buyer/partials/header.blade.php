@@ -44,7 +44,7 @@
 								<a class="nav-link text-white add-button" href="{{route('login',['seller'=>'yes'])}}">Login As Seller</a>
 							</li>
 							@endguest
-							@auth
+							
 							@if(Auth::user()->role=='seller')
 							<li class="nav-item text-white add-button dropdown dropdown-slide">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Welcome, {{Auth::user()->sellerDetail->title.' '.Auth::user()->sellerDetail->f_name}}<span></span>
@@ -73,7 +73,7 @@
 								</div>
 							</li>	
 								@endif
-							@endauth
+							
 						</ul>
 					</div>
 				</nav>
