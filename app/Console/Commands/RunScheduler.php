@@ -66,10 +66,11 @@ class RunScheduler extends Command
         $date = date('Y-m-d H:i:s', time());
         // dd($date);
        $d1=strtotime($date);
-      $dat2= date('Y-m-d 18:13:00');
+      $dat2= date('Y-m-d 18:15:00');
         
         $d2 = strtotime($dat2);
         $totalSecondsDiff = abs($d1-$d2); //42600225
-         return $totalSecondsDiff;
+        $totalMinutesDiff = $totalSecondsDiff/60;
+         return $totalMinutesDiff;
     }
 }
