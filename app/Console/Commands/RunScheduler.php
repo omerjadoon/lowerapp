@@ -62,11 +62,11 @@ class RunScheduler extends Command
      */
     protected function nextMinute()
     {
-        date_default_timezone_set('Asia/Karachi');
+        date_default_timezone_set('Australia/sydney');
         $date = date('Y-m-d H:i:s', time());
-        // dd($date);
+    
        $d1=strtotime($date);
-      $dat2= date('Y-m-d 18:20:00');
+      $dat2= date('Y-m-d 24:00:00');
         
         $d2 = strtotime($dat2);
         $totalSecondsDiff = abs($d1-$d2); 

@@ -10,6 +10,8 @@ use Auth;
 class MainController extends Controller
 {
     public function index(){
+       
+       
         $data['ad']=Ad::with('belongtocategory')->orderBy('created_at','desc')->take(4)->get();
         $data['cat']=Category::take(8)->get();
         
