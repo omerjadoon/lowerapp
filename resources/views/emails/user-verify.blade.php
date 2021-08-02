@@ -123,7 +123,7 @@
                     <p style="font-size:14px;padding: 5px;">If that doesn't work, copy and paste the following link in your browser:</p>
                     {{$actionUrl}}
                     <p style="font-size:14px;padding: 5px;">Best Regards,</p>
-<p style="font-size: 14px;padding: 5px;">BigProfitAds Team</p>
+<p style="font-size: 14px;padding: 5px;">LowLowerGone Team</p>
                   </td>
                 </tr>
               </tbody>
