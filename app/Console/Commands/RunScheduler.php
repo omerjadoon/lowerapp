@@ -51,6 +51,7 @@ class RunScheduler extends Command
         $this->info('completed, sleeping..'.$this->nextMinute());
         sleep($this->nextMinute());
         $this->runScheduler();
+
     }
 
     /**
@@ -60,7 +61,14 @@ class RunScheduler extends Command
      */
     protected function nextMinute()
     {
-        $current = Carbon::now();
-        return 60 -$current->second;
+        date_default_timezone_set('Asia/Karachi');
+        $date = date('Y-m-d H:i:s', time());
+        // dd($date);
+       $d1=strtotime($date);
+      $dat2= date('Y-m-d 23:59:59');
+        
+        $d2 = strtotime($dat2);
+        $totalSecondsDiff = abs($d1-$d2); //42600225
+         return $totalSecondsDiff;
     }
 }
