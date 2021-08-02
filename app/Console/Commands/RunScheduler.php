@@ -5,7 +5,10 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Artisan;
-
+use App\{Country,State,City,User,Contactus,Category,Ad,AdImage,AdRequest};
+use Mail;
+use DB;
+use Auth;
 class RunScheduler extends Command
 {
     /**
@@ -48,8 +51,9 @@ class RunScheduler extends Command
 
         $this->info('Running scheduler');
         Artisan::$fn('schedule:run');
+        $ad=Ad::where('status',0)->get();
+
         $this->info('completed, sleeping..\n'.$this->nextMinute());
-        // $this->handle();
         sleep($this->nextMinute());
         $this->runScheduler();
 

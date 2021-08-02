@@ -83,6 +83,7 @@ class AdController extends Controller
             $ads->cat_id=$request->category;
             $ads->desc=$request->desc;
             $ads->price_range=$request->price_range;
+            $ads->actual_price=$request->price_range;
             $ads->lower_selling_price=$request->lower_selling_price;
             $ads->seller_id=Auth::user()->sellerDetail->id;
             if($request->has('coverfile')){
