@@ -13,11 +13,6 @@ use App\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/update/email',function(){
-  User::where('id',2)->update([
-	  'email'=>'kenu@reve.me',
-  ]);
-});
 
 Route::get('/', 'MainController@index')->name('main');
 Route::post('save-contact','MainController@savecontact')->name('save_contact');
