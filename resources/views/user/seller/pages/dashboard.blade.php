@@ -25,8 +25,8 @@
                   <div class="bg-primary b-r-4 card-body">
                     <div class="media static-top-widget">
                       <div class="align-self-center text-center"><i data-feather="database"></i></div>
-                      <div class="media-body"><span class="m-0">Total Amount</span>
-                        <h4 class="mb-0">0 Cent</h4><i class="icon-bg" data-feather="database"></i>
+                      <div class="media-body"><span class="m-0">Total Earning</span>
+                        <h4 class="mb-0">{{number_format(App\AdRequest::where('seller_id',Auth::user()->sellerDetail->id)->where('status',1)->sum('offer_price'))}} $</h4><i class="icon-bg" data-feather="database"></i>
                       </div>
                     </div>
                   </div>
@@ -36,9 +36,9 @@
                 <div class="card o-hidden">
                   <div class="bg-secondary b-r-4 card-body">
                     <div class="media static-top-widget">
-                      <div class="align-self-center text-center"><i data-feather="pocket"></i></div>
-                      <div class="media-body"><span class="m-0">Amount Payed</span>
-                        <h4 class="mb-0">0 Cent</h4><i class="icon-bg" data-feather="pocket"></i>
+                      <div class="align-self-center text-center"><i data-feather="monitor"></i></div>
+                      <div class="media-body"><span class="m-0">Total Ads</span>
+                        <h4 class="mb-0">{{Auth::user()->sellerDetail->sellerpostedmanyads->count()}}</h4><i class="icon-bg" data-feather="monitor"></i>
                       </div>
                     </div>
                   </div>
@@ -49,8 +49,8 @@
                   <div class="bg-primary b-r-4 card-body">
                     <div class="media static-top-widget">
                       <div class="align-self-center text-center"><i data-feather="layers"></i></div>
-                      <div class="media-body"><span class="m-0">Amnount Remaining</span>
-                        <h4 class="mb-0">0 Cent</h4><i class="icon-bg" data-feather="layers"></i>
+                      <div class="media-body"><span class="m-0">Ads Sold</span>
+                        <h4 class="mb-0">{{Auth::user()->sellerDetail->sellerpostedmanyads->where('status',1)->count()}}</h4><i class="icon-bg" data-feather="layers"></i>
                       </div>
                     </div>
                   </div>
@@ -58,32 +58,59 @@
               </div>
       </div> 
       <div class="row">
-        <div class="col-xl-3 xl-50 chart_data_right box-col-12">
+        <div class="col-xl-3 chart_data_right box-col-12">
                 <div class="card">
                   <div class="card-body">
                     <div class="media align-items-center">
                       <div class="media-body right-chart-content">
-                        <h4>0
+                        <h4>{{App\AdRequest::where('seller_id',Auth::user()->sellerDetail->id)->count()}}
                             <!-- <span class="new-box">Hot</span> -->
-                        </h4><span>Total Posted Ads</span>
+                        </h4><span>Total Offers</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-xl-3 xl-50 chart_data_right second d-none"> 
+              <div class="col-xl-3 chart_data_right second d-none"> 
                 <div class="card">
                   <div class="card-body">
                     <div class="media align-items-center">
                       <div class="media-body right-chart-content"> 
-                        <h4>0
+                        <h4>{{App\AdRequest::where('seller_id',Auth::user()->sellerDetail->id)->where('status',0)->count()}}
                             <!-- <span class="new-box">New</span> -->
-                        </h4><span>Total Leads Against Posted Ads</span>
+                        </h4><span>Total Pending Offers</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="col-xl-3 chart_data_right second d-none"> 
+                <div class="card">
+                  <div class="card-body">
+                    <div class="media align-items-center">
+                      <div class="media-body right-chart-content"> 
+                        <h4>{{App\AdRequest::where('seller_id',Auth::user()->sellerDetail->id)->where('status',1)->count()}}
+                            <!-- <span class="new-box">New</span> -->
+                        </h4><span>Total Approved Offers</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 chart_data_right second d-none"> 
+                <div class="card">
+                  <div class="card-body">
+                    <div class="media align-items-center">
+                      <div class="media-body right-chart-content"> 
+                        <h4>{{App\AdRequest::where('seller_id',Auth::user()->sellerDetail->id)->where('status',2)->count()}}
+                            <!-- <span class="new-box">New</span> -->
+                        </h4><span>Total Rejected Offers</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
       </div>    
     <div class="row second-chart-list third-news-update">
               <div class="col-xl-4 col-lg-12 xl-50 morning-sec box-col-12">

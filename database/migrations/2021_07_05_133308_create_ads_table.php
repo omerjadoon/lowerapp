@@ -26,7 +26,7 @@ class CreateAdsTable extends Migration
             $table->bigInteger('day_count')->default(0);
             $table->float('actual_price');
             $table->float('price_range');
-            $table->float('dec_amount')->default(0.00);
+            $table->float('dec_percent')->default(5.00);
             $table->float('lower_selling_price');
             $table->float('total_decrement_amount')->default(0.00);
             $table->text('cover_file_name');

@@ -79,16 +79,16 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <div class="huge">0</div>
-                                            <div>Business Partners</div>
+                                            <div>Buyers</div>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="">
                                     <div class="panel-footer">
                                         <div class="row">
-                                            <div class="col-md-4"><b>Total Amount</b><div> 0 Cent</div></div>
-                                             <div class="col-md-4"><b>Amount Received</b><div> 0 Cent</div></div>
-                                             <div class="col-md-4"><b>Amount Remaining</b><div> 0 Cent</div></div>
+                                            <div class="col-md-4"><b>Ad Offer Pending</b><div> 0 Cent</div></div>
+                                             <div class="col-md-4"><b>Ad Offer Approve</b><div> 0 Cent</div></div>
+                                             <div class="col-md-4"><b>Ad Offer Rejected</b><div> 0 Cent</div></div>
                                         </div>
 
                                       <!--   <span class="pull-left">View Details</span>
@@ -108,14 +108,14 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <div class="huge">0</div>
-                                            <div>Media Partners</div>
+                                            <div>Sellers</div>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="">
                                    <div class="panel-footer">
                                         <div class="row">
-                                            <div class="col-md-4"><b>Commission Earned</b><div> 0 Cent</div></div>
+                                            <div class="col-md-4"><b></b><div> 0 Cent</div></div>
                                              <div class="col-md-4"><b>Received</b><div> 0 Cent</div></div>
                                              <div class="col-md-4"><b>Remaining</b><div> 0 Cent</div></div>
                                         </div>
