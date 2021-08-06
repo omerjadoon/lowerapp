@@ -1,4 +1,4 @@
-@extends('user.seller.layouts.app',['title'=>'Send reset Link']);
+@extends('user.seller.layouts.app',['title'=>'Send reset Link'])
 
 @section('login_signup')
 <div class="container">

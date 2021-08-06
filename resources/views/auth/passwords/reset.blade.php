@@ -1,4 +1,4 @@
-@extends('user.seller.layouts.app',['title'=>'Reset Pass']);
+@extends('user.seller.layouts.app',['title'=>'Reset Pass'])
 @section('login_signup')
 <div class="container">
     <div class="row justify-content-center">

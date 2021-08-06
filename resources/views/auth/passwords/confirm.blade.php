@@ -1,6 +1,6 @@
-@extends('user.seller.layouts.app',['title'=>'Confirm Pass']);
+@extends('user.seller.layouts.app',['title'=>'Confirm Pass'])
 
-@section('content')
+@section('login_signup')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
