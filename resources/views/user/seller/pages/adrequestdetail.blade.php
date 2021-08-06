@@ -71,7 +71,7 @@
                                 </li>
                                 <li class="mt-3">Name<span class="font-primary first_name_0 float">{{$adrequest->belongtobuyer->f_name.' '.$adrequest->belongtobuyer->l_name}}</span></li>
                                 
-                                <li class="mt-3">Contact #<span class="font-primary float">{{$adrequest->belongtobuyer->phone}}</span></li>
+                                {{-- <li class="mt-3">Contact #<span class="font-primary float">{{$adrequest->belongtobuyer->phone}}</span></li> --}}
                                 <li class="mt-3">Location<span class="font-primary personality_0 float">{{$adrequest->belongtobuyer->belongtocity->name.' '.$adrequest->belongtobuyer->belongtocity->belongtostate->name.', '.$adrequest->belongtobuyer->belongtocity->belongtostate->belongtocountry->name }}</span></li>
                                 
 

@@ -145,7 +145,7 @@ img.zoom {
 						<img class="rounded-circle img-fluid mb-5 px-5" src="{{asset($ad->belongtoseller->file_path)}}" alt="">
 						<h4><a href="">{{$ad->belongtoseller->title.' '.$ad->belongtoseller->f_name.' '.$ad->belongtoseller->l_name}}</a></h4>
 						<p class="member-time">Member Since {{$ad->belongtoseller->created_at->format('M d,Y')}}</p>
-                        <p class="member-time">Contact # {{$ad->belongtoseller->phone}}</p>
+                        {{-- <p class="member-time">Contact # {{$ad->belongtoseller->phone}}</p> --}}
 						{{-- <a href="">See all ads</a> --}}
 						<ul class="list-inline mt-20">
                             @if($ad->status==0)
