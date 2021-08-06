@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('user.seller.layouts.app',['title'=>'Confirm Pass']);
 
 @section('content')
 <div class="container">

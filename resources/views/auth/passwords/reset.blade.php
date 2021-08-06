@@ -1,6 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+@extends('user.seller.layouts.app',['title'=>'Reset Pass']);
+@section('login_signup')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -63,3 +62,4 @@
     </div>
 </div>
 @endsection
+

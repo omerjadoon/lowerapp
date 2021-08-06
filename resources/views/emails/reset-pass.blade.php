@@ -67,12 +67,12 @@
                 <tr>
                   <td style="padding: 30px"> 
                     <h6 style="font-weight: 600">Password Reset</h6>
-                    <p>you forgot your password for BigProfitAds. If this is true, click below to reset your password.</p>
+                    <p>you forgot your password for LowLowerGone. If this is true, click below to reset your password.</p>
                     <p style="text-align: center"><a href="{{url('password/reset/'.$token)}}" style="padding: 10px; background-color: #7366ff; color: #fff; display: inline-block; border-radius: 4px">Reset Password</a></p>
                     <p>If you have remember your password you can safely ignore his email.</p>
                     <p>Good luck! Hope it works.</p>
                     <p style="margin-bottom: 0">
-                      Regards,<br>BigProfitAds Team.</p>
+                      Regards,<br>LowLowerGone Team.</p>
                   </td>
                 </tr>
               </tbody>
@@ -81,7 +81,7 @@
               <tbody>       
                 <tr style="text-align: center">
                   <td> 
-                    <p style="color: #999; margin-bottom: 0">2018 - 2021 © Copy Right by BIG PROFIT ADS</p>
+                    <p style="color: #999; margin-bottom: 0">2021 © Copy Right by LOWLOWERGONE</p>
                   </td>
                 </tr>
               </tbody>

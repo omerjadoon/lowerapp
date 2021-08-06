@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('user.seller.layouts.app',['title'=>'Send reset Link']);
 
-@section('content')
+@section('login_signup')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
