@@ -51,14 +51,15 @@ class RunScheduler extends Command
 
         $this->info('Running scheduler');
         Artisan::$fn('schedule:run');
+        $ad=Ad::where('status',1)->get();
         if($ad->count()>0){
             foreach($ad as $key=>$item){
                 $adupd=Ad::findorFail($item->id);
-                if($adupd->price_range>$adupd->lower_selling_price){
-                    $calcamount=$adupd->price_range-($adupd->price_range*$adupd->dec_percent/100);
-                    if($calcamount<$adupd->lower_selling_price){
-                        $getcomb=$adupd->lower_selling_price-$calcamount;
-                        $calcamount+=$getcomb;
+                if($adupd->price_range>$adupd->lower_selling_price && $adupd->day_count<$adupd->no_of_days){
+                    if($adupd->discounttype=='amt_wise'){
+                        $calcamount=$adupd->price_range-$adupd->perdaydiscount;
+                    }else if($adupd->discounttype=='per_wise'){
+                        $calcamount=$adupd->price_range-($adupd->price_range*$adupd->perdaydiscount/100);
                     }
                     $adupd->price_range=round($calcamount,2);
                     $adupd->day_count+=1;

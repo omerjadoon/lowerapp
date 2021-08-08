@@ -108,7 +108,7 @@ class BuyerController extends Controller
                     $image=$request->file('profile');
                     $extension = $image->getClientOriginalExtension();
                     $filename = 'user-'.Auth::user()->id.'00'.uniqid().'.'.$extension;
-                    Storage::disk('s3')->delete('profileImages/'.$user->file_name);
+                    // Storage::disk('s3')->delete('profileImages/'.$user->file_name);
                     $path = Storage::disk('s3')->put('profileImages/'.$filename,file_get_contents($image), 'public');
                     $filepath=Storage::disk('s3')->url('profileImages/'.$filename);
                     $user->file_name=$filename;

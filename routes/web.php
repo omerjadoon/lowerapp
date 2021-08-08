@@ -50,6 +50,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 		Route::get('account-setting','SellerController@account_setting')->name('account');
 		Route::get('change-password','SellerController@change_password')->name('change_password');
 		Route::resource('ads','AdController');
+		Route::get('checkadsvalidation','AdController@validation')->name('validation');
 		Route::get('upload-ads','AdController@uploadadindex')->name('upload_ad');
 		Route::resource('ad-offers','AdrequestController');
 		Route::get('request-action','AdrequestController@requestaction')->name('requestaction');

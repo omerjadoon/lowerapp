@@ -58,18 +58,54 @@ class AdController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function validation(Request $request){
+    //   dd($request->all());
+        if($request->checkaddr=='step1'){
+            $this->validate($request,[
+                'coverfile'=>['required'],
+                'category'=>['required'],
+                'title' => ['required', 'string', 'max:255'],
+                'desc' => ['required', 'string','min:100', 'max:500'],
+            ]);
+        }else if($request->checkaddr=='step2'){
+            $this->validate($request,[
+                'price_range'=>['required'],
+                'no_of_days'=>['required'],
+                'discounttype' => ['required'],
+                'lower_selling_price' => ['required'],
+            ]);
+            if($request->discounttype=='amt_wise'){
+                $this->validate($request,[
+                    'dis_amount'=>['required'],
+                ]);
+            }else{
+                $this->validate($request,[
+                    'dis_percent'=>['required'],
+                ]);
+            }
+        }
+        else if($request->checkaddr=='step3'){
+            
+            $this->validate($request,[
+                'adsfile'=>['required','array','min:6'],
+            ]);
+            // dd($request->adsfile);
+            
+        }
+        
+    }
     public function store(Request $request)
     {
            
-        $this->validate($request,[
-            'coverfile'=>['required'],
-            'adsfile'=>['required','array','min:6'],
-            'category'=>['required'],
-            'title' => ['required', 'string', 'max:255'],
-            'desc' => ['required', 'string','min:100', 'max:500'],
-            'price_range' => ['required','integer'],
-            'lower_selling_price'=>['required', 'integer'],
-        ]);
+        // $this->validate($request,[
+        //     'coverfile'=>['required'],
+        //     'adsfile'=>['required','array','min:6'],
+        //     'category'=>['required'],
+        //     'title' => ['required', 'string', 'max:255'],
+        //     'desc' => ['required', 'string','min:100', 'max:500'],
+        //     'price_range' => ['required','integer'],
+        //     'lower_selling_price'=>['required', 'integer'],
+        // ]);
         DB::beginTransaction();
         $slug=urlencode(strtolower($request->title));
         $adslug=Ad::where('ad_slug',$slug)->count();
@@ -86,6 +122,14 @@ class AdController extends Controller
             $ads->actual_price=$request->price_range;
             $ads->lower_selling_price=$request->lower_selling_price;
             $ads->seller_id=Auth::user()->sellerDetail->id;
+            $ads->no_of_days=$request->no_of_days;
+            $ads->discounttype=$request->discounttype;
+            if($request->discounttype=='amt_wise'){
+                $ads->perdaydiscount=$request->dis_amount;
+            }
+            else{
+                $ads->perdaydiscount=$request->dis_percent;
+            }
             if($request->has('coverfile')){
                 $image=$request->file('coverfile');
                 $extension = $image->getClientOriginalExtension();

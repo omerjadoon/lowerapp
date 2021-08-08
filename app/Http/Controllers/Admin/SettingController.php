@@ -211,7 +211,7 @@ class SettingController extends Controller
             $data->name=$request->type;
             $data->cat_slug=urlencode(strtolower($request->type));
             if($request->has('catfile')){
-                Storage::disk('s3')->delete('caticon/'.$data->file_name);
+                // Storage::disk('s3')->delete('caticon/'.$data->file_name);
                 $image=$request->file('catfile');
                 $extension = $image->getClientOriginalExtension();
                 $filename = 'cats-10101'.uniqid().'.'.$extension;
