@@ -59,7 +59,7 @@ class AdController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function validation(Request $request){
-      dd($request->all());
+     
         if($request->checkaddr=='step1'){
             $this->validate($request,[
                 'coverfile'=>['required'],
@@ -92,6 +92,7 @@ class AdController extends Controller
             // dd($request->adsfile);
             
         }
+        dd($request->all());
         
     }
     public function store(Request $request)
