@@ -265,6 +265,7 @@ $('#finish').click(function(){
                 }
             });
 });
+
         
     $('.changestep').click(function(){
         $('.error-field').html('');
@@ -275,7 +276,7 @@ $('#finish').click(function(){
         if(checkaddr){
             $.ajax({
                 url:"{{route('validation')}}",
-                type:"get",
+                type:"post",
                 data:form + "&coverfile="+$("input[name=coverfile]").val()+"&checkaddr="+checkaddr,            
                 success:function(resp){
                     console.log("succes" + resp.status)
