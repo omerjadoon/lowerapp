@@ -1,4 +1,4 @@
-@extends('user.seller.layouts.app',['title'=>'Ads','request'=>'Ads'])
+@extends('user.seller.layouts.app',['title'=>'Ad Detail','request'=>'Ads'])
  @push('css')
 <style type="text/css">
 .custom {
@@ -30,8 +30,8 @@
     }.no-border{
         border: none;
     }.cvr-img-70{
-        min-height: 300px;
-        max-height: 300px;
+        min-height: 500px;
+        max-height: 500px;
         border-style: double !important;
         border: 3px;
         min-width: 100%;
@@ -90,34 +90,58 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                            <div class="col-md-12 p-2">
+                            {{-- <div class="col-md-12 p-2">
                                 <label class="control-label" for="title"><u>Title</u></label>
                                 <input disabled readonly id="title" name="title" value="{{$ad->title}}" type="text" placeholder="Ad title" class="form-control no-border">
-                                 {{-- @include('alerts.errorfield',['field'=>'title']) --}}
-                            </div>
+                                
+                            </div> --}}
                             <div class="col-md-12 p-2">
                                  <label class="control-label" for="cat_id"><u>Category</u></label>
                                  <input disabled readonly id="cat_id" name="cat" value="{{$ad->belongtocategory->name}}" type="text" placeholder="Ad title" class="form-control no-border">
                                 
                                  
-                                {{--<select id="cat_id" name="category" class="form-control">
-	    							
-	    							@foreach ($category as $key=>$cat)
-                                        <option value="{{$cat->id}}" {{$cat->id==$ad->cat_id ? 'selected' : ''}}>{{$cat->name}}</option>
-                                    @endforeach
-	      						
-	    						</select> 
-                                @include('alerts.errorfield',['field'=>'cat_id']) --}}
+                              
                             </div>
                             <div class="col-md-12 p-2">
-                                <label class="control-label" for="price_range"><u>Price</u></label>
-                                <input disabled readonly id="price_range" name="price_range" value="{{number_format($ad->price_range)}}$" type="text" placeholder="Ad Price" class="form-control no-border">
-                                 {{-- @include('alerts.errorfield',['field'=>'price_range']) --}}
+                                <label class="control-label" for="price_range"><u>Basic Price</u></label>
+                                <input disabled readonly id="price_range" name="price_range" value="{{number_format($ad->actual_price)}}$" type="text" placeholder="Ad Price" class="form-control no-border">
+                                 
                             </div>
+                            <div class="col-md-12 p-2">
+                                <label class="control-label" for="price_range"><u>Current Price</u></label>
+                                <input disabled readonly id="price_range" name="price_range" value="{{number_format($ad->price_range)}}$" type="text" placeholder="Ad Price" class="form-control no-border">
+                                
+                            </div>
+                            <div class="col-md-12">
+                                <hr>
+                                DISCOUNT SETTING
+                                <hr>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="control-label" for="lower_selling_price"><u>Discount Type </u></label>
+                                        <input disabled readonly id="lower_selling_price" name="lower_selling_price" value="{{$ad->discounttype=='amt_wise' ? 'Amount Wise' : 'Percent Wise'}}" type="text" placeholder="Lower Selling Ad Price" class="form-control no-border"> 
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="control-label" for="lower_selling_price"><u>Per Day Discount </u></label>
+                                        <input disabled readonly id="lower_selling_price" name="lower_selling_price" value="{{number_format($ad->perdaydiscount )}}{{$ad->discounttype=='amt_wise' ? '$' : '%'}}" type="text" placeholder="Lower Selling Ad Price" class="form-control no-border"> 
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 p-2">
+                                <label class="control-label" for="lower_selling_price"><u>Number Of Days</u></label>
+                                <input disabled readonly id="lower_selling_price" name="lower_selling_price" value="{{$ad->no_of_days}} Days" type="text" placeholder="Lower Selling Ad Price" class="form-control no-border"> 
+                                
+                            </div>
+                        
+                           
                             <div class="col-md-12 p-2">
                                 <label class="control-label" for="lower_selling_price"><u>Lower Selling Price </u></label>
                                 <input disabled readonly id="lower_selling_price" name="lower_selling_price" value="{{number_format($ad->lower_selling_price)}}$" type="text" placeholder="Lower Selling Ad Price" class="form-control no-border"> 
-                                {{-- @include('alerts.errorfield',['field'=>'lower_selling_price']) --}}
+                                
                             </div>
 
                         </div>
@@ -138,33 +162,27 @@
                             <div class="col-md-3">
                                 <div class="form-group mb-3">
 
-                                    {{-- <label class="form-label">Profile Pic</label> --}}
                                     <div class="avatar"><img alt="" class="img-70 img-thumbnail" id="prev{{$key+1}}" src="{{asset($item->file_path)}}" data-original-title="" title=""></div>
-                                    {{--<input type="file" value="" data-idname="{{$key+1}}" name="adsfile[]" id="filee{{$key+1}}" style="display:none" onchange="previewFile(this);" accept="image/*"  data-original-title="" title="">
-                                     <div class="roundedpencil" id="addclose{{$key+1}}"><span class="remove-by" idname="{{$key+1}}"><i class="fa fa-trash"></i></span></div> --}}
-                                </div>
+                                       </div>
                             </div> 
                             
                             @endforeach
                            
-                            {{-- @for($i=$key+2;$i<=10;$i++) 
-                            <div class="col-md-3">
-                                <div class="form-group mb-3">
-                                    <div class="avatar"><img alt="" class="img-70 img-thumbnail" id="prev{{$i}}" src="{{asset('images/img-place.png')}}" data-original-title="" title=""></div>
-                                    <input type="file" value="" data-idname="{{$i}}" name="adsfile[]" id="filee{{$i}}" style="display:none" onchange="previewFile(this);" accept="image/*"  data-original-title="" title="">
-                                    <div class="roundedpencil" id="addclose{{$i}}"><label for="filee{{$i}}"><i class="icofont icofont-pencil-alt-5"></i></label></div>
-                                </div>
-                            </div>    
-                            @endfor --}}
-                            
+                      
                             
                         </div>
-                        @include('alerts.errorfield',['field'=>'adsfile'])
-                        {{-- <div class="form-group row">
-                            <div class="col-md-12">
-                                <button type="submit" style="width:inherit" class="btn btn-success btn-lg text-center">Save Changes</button>
+                    
+                        <div class="form-group row">
+                            <div class="col-md-12 text-right">
+                                @if($ad->delete_request==0)
+                                <a href="{{route('ads.edit',$ad->id)}}" class="btn btn-danger btn-sm text-center"><i class="fa fa-trash"></i>  Request Deletion</a>
+                                @elseif($ad->delete_request==1)
+                                <button class="btn btn-warning btn-sm text-center"><i class="fa fa-bolt"></i> Deletion Request Pending</button>
+                                @elseif($ad->delete_request==2)
+                                <a href="{{route('ads.edit',$ad->id)}}" class="btn btn-danger btn-sm text-center"><i class="fa fa-remove"></i> Deletion Request Rejected </br> Request Again</a>
+                                @endif
                             </div>
-                        </div> --}}
+                        </div>
                     </form>
                 </div>
             </div>

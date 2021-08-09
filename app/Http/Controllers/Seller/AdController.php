@@ -59,7 +59,7 @@ class AdController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function validation(Request $request){
-     
+    //   dd($request->all());
         if($request->checkaddr=='step1'){
             $this->validate($request,[
                 'coverfile'=>['required'],
@@ -92,10 +92,8 @@ class AdController extends Controller
             // dd($request->adsfile);
             
         }
-        return [
-            'status'=>200,
-        ];
         
+        return ['status'=>200];
     }
     public function store(Request $request)
     {
@@ -189,7 +187,11 @@ class AdController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ad=Ad::findOrFail($id);
+        $ad->delete_request=1;
+        $ad->update();
+        return back()->with('success','Deletion Reqeust Send successfully');
+        
     }
 
     /**

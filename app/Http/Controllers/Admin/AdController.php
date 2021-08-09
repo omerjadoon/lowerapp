@@ -94,9 +94,21 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request)
     {
-        //
+        if($request->status==3){
+            $ad=Ad::findorFail($id);
+            $ad->delete();
+            return redirect()->route('ad.index')->with('success','Ad delete Successfully');
+        }
+        else if($request->status==2){
+            $ad=Ad::findorFail($id);
+            $ad->delete_request=2;
+            $ad->update();
+            return back()->with('success','Deletion Reqeust Rejected successfully');
+        }
+        return back();
+       
     }
 
     /**

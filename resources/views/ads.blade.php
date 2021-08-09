@@ -159,7 +159,8 @@
                 <div class="pagination justify-content-center py-4">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                           {{$ad->links()}}
+                            
+                           {{$ad->appends(Request::all())->links()}}
                         </ul>
                     </nav>
                 </div>

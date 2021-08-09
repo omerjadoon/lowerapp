@@ -116,17 +116,26 @@ img.zoom {
                                
                                         
                                             <li class="p-10"><span style="font-size: 20px"><b>Posted By : </b></span><span style="font-size: 18px"><a href="{{route('seller.show',$adsection->belongtoseller->belongtouser->id)}}">{{$adsection->belongtoseller->title.' '.$adsection->belongtoseller->f_name.' '.$adsection->belongtoseller->l_name}}</a></span></li>
-                                            <li class="p-10"><span style="font-size: 20px"><b>Price Range : </b></span><span style="font-size: 18px">{{number_format($adsection->price_range)}}$</span></li>
+                                            <li class="p-10"><span style="font-size: 20px"><b>Basic Price : </b></span><span style="font-size: 18px">{{number_format($adsection->price_range)}}$</span></li>
+                                            <li class="p-10"><span style="font-size: 20px"><b>Current Price : </b></span><span style="font-size: 18px">{{number_format($adsection->actual_price)}}$</span></li>
+                                            {{-- <li class="p-10"><span style="font-size: 20px"><b>Description : </b></span><span style="font-size: 18px">{{$adsection->desc}}</span></li> --}}
+                                            <li class="p-10"><span style="font-size: 20px"><b>Total Offer : </b></span><span style="font-size: 18px"><a href="{{route('adofer',['ad_id'=>$adsection->id])}}">{{$adsection->adhasmanyrequest->count()}}</a></span></li>
+                                             <li><hr>DISCOUNT SETTING<hr></li>   
+                                            <li class="p-10"><span style="font-size: 20px"><b>Number Of days : </b></span><span style="font-size: 18px">{{$adsection->no_of_days}} Days</span></li>
+                                            <li class="p-10"><span style="font-size: 20px"><b>Discount Type : </b></span><span style="font-size: 18px">{{$adsection->discounttype=='amt_wise' ? 'Amount Wise' : 'Percent Wise'}}</span></li>
+                                            <li class="p-10"><span style="font-size: 20px"><b>Per Day Discount : </b></span><span style="font-size: 18px">{{number_format($adsection->perdaydiscount )}}{{$adsection->discounttype=='amt_wise' ? '$' : '%'}}</span></li>
                                             <li class="p-10"><span style="font-size: 20px"><b>Lower Selling Price : </b></span><span style="font-size: 18px">{{number_format($adsection->lower_selling_price)}}$</span></li>
-                                            <li class="p-10"><span style="font-size: 20px"><b>Description : </b></span><span style="font-size: 18px">{{$adsection->desc}}</span></li>
-                                            <li class="p-10"><span style="font-size: 20px"><b>Total Offer : </b></span><span style="font-size: 18px"><a href="{{route('adofer',['ad_id'=>$adsection->id])}}">{{$adsection->adhasmanyrequest->count()}}</span></li>
                                           
                                        
                              </div>
+                             <div class="col-md-12 mt-10">
+                                <li class="p-10"><span style="font-size: 20px"><b>Description : </b></span><span style="font-size: 18px">{{$adsection->desc}}</span></li>
+                             </div>
                          </div>
-                        <div class="container page-top">
+                        
+                        {{-- <div class="container page-top"> --}}
                             
-                            <div class="row">
+                            <div class="row mt-10">
                                 @foreach ($adsection->adhasmanyimage as $image)
                                 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                                     <a href="{{asset($image->file_path)}}" class="fancybox" rel="ligthbox">
@@ -135,10 +144,27 @@ img.zoom {
                                 </div> 
                                 @endforeach  
                             </div>
-                        </div>
+                        {{-- </div> --}}
+                      
                         <div class="row mt-10">
-                            <div class="col-md-12 text-center"><button onClick="history.go(-1);" class="btn btn-primary">Go back</button></div>
+                            <div class="col-md-12 text-center">
+                                @if($adsection->delete_request==1)
+                                <button class="btn btn-sm btn-secondary">Request For Deletion</button>
+                            </br>
+                        </br>
+                            <button href="{{route('ad.edit',$adsection->id)}}" status=3 class="btn btn-sm btn-success rem"><i class="fa fa-check"></i> Accept</button>
+                            <button href="{{route('ad.edit',$adsection->id)}}" status=2 class="btn btn-sm btn-danger rem"><i class="fa fa-remove"></i> Reject</button>
+                           
+                            @elseif($adsection->delete_request==2)
+                            <button class="btn btn-sm btn-danger">Deletion Request Rejected</button>
+                            @endif
                         </div>
+                        </div>
+                      
+                        <div class="row mt-10">
+                            <div class="col-md-12 text-right"><button onClick="history.go(-1);" class="btn btn-primary">Go back</button></div>
+                        </div>
+                        
                     </div>
                 </div>
                 @else
@@ -165,5 +191,32 @@ img.zoom {
         
 		$(this).removeClass('transition');
 	});
+
+
+    $('.rem').on('click',function(){
+        status=$(this).attr('status');
+        if(status==3){
+            msg="Once deleted, you will not be able to recover this Ad";
+
+        }else if(status==2){
+            msg="You want to reject this Ad Deletion Request";
+        }
+                swal({
+  title: "Are you sure?",
+  text: msg,
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+      link=$(this).attr('href')+"?status="+status;
+    window.location.href=link;
+
+  } else {
+    swal("Your Action is safe!");
+  }
+});
+               });
 </script>
 @endpush

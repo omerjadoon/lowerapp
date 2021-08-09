@@ -106,7 +106,7 @@
   <div class="row mb-3">
     <div class="col-md-2 offset-5 text-center">
      
-        {{$ads->links()}}
+        {{$ads->appends(Request::all())->links()}}
       
     </div>
   </div>

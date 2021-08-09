@@ -133,6 +133,7 @@
                                         <div class="row mt-10">
                                             <div class="col-md-12 text-center">
                                                 <a href="{{route('ad.show',$ad->id)}}" class="btn btn-info">View Detail</a>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -155,7 +156,7 @@
                         <div class="row">
 
                             <div class="col-md-12  text-center">
-                                {{$adsection->links()}}
+                                {{$adsection->appends(Request::all())->links()}}
                             </div>
                         </div>
                     </div>

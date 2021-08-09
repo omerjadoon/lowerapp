@@ -34,7 +34,7 @@ class CreateAdsTable extends Migration
             $table->text('cover_file_name');
             $table->text('cover_file_path');
             $table->string('cover_file_extension');
-            $table->tinyInteger('is_featured')->default(0);
+            $table->tinyInteger('delete_request')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
