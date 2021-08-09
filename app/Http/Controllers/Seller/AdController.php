@@ -92,7 +92,9 @@ class AdController extends Controller
             // dd($request->adsfile);
             
         }
-        dd($request->all());
+        return [
+            'status'=>200,
+        ];
         
     }
     public function store(Request $request)

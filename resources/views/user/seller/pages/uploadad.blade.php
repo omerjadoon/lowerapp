@@ -235,8 +235,10 @@ $('#finish').click(function(){
                   
               $.ajax({
                 url:"{{route('validation')}}",
-                type:"get",
+                type:"post",
+                dataType: "json",
                 data:{
+                    _token:"{{csrf_token()}}",
                     checkaddr:checkaddr,
                     adsfile:results,
                 },            
