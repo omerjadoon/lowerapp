@@ -277,6 +277,7 @@ $('#finish').click(function(){
             $.ajax({
                 url:"{{route('validation')}}",
                 type:"post",
+                dataType: "json",
                 data:form + "&coverfile="+$("input[name=coverfile]").val()+"&checkaddr="+checkaddr,            
                 success:function(resp){
                     console.log("succes" + resp.status)
