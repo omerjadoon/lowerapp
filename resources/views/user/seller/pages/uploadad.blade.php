@@ -123,13 +123,13 @@
                                     <div class="form-group row">
                                         <div class="col-md-12 mt-2">
                                             <label class="control-label" for="price_range_s">Basic Price</label>
-                                            <input id="price_range_s" name="price_range" value="{{old('price_range')}}" type="number" placeholder="Ad Price" class="form-control">
+                                            <input id="price_range_s" name="price_range" value="{{old('price_range')}}" type="number" placeholder="Product Price" class="form-control">
                                             <span class="error-field text-danger custom" id="price_range" role="alert"></span>
                                         
                                         </div>
                                         <div class="col-md-12 mt-2">
-                                            <label class="control-label" for="no_of_days_c">Number Of Days</label>
-                                            <input id="no_of_days_c" name="no_of_days" value="{{old('no_of_days')}}" type="number" placeholder="no of days for discount activate" class="form-control">
+                                            <label class="control-label" for="no_of_days_c">Number of Days</label>
+                                            <input id="no_of_days_c" name="no_of_days" value="{{old('no_of_days')}}" type="number" placeholder="Campaign Days" class="form-control">
                                             <span class="error-field text-danger custom" id="no_of_days" role="alert"></span>
                                         
                                         </div>
